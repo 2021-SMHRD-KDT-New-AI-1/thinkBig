@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu1"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="추가하기" />
+    <item
+        android:id="@+id/menu2"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="Main" />
+    <item
+        android:id="@+id/menu3"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="리스트" />
+    <item
+        android:id="@+id/menu4"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="설정" />
+</menu>
