@@ -7,14 +7,14 @@
         android:title="추가하기" />
     <item
         android:id="@+id/menu2"
-        android:icon="@android:drawable/ic_lock_power_off"
+        android:icon="@drawable/sun"
         android:title="Main" />
     <item
         android:id="@+id/menu3"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/list_icon"
         android:title="리스트" />
     <item
         android:id="@+id/menu4"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/settings"
         android:title="설정" />
 </menu>
