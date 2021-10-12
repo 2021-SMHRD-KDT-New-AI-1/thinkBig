@@ -7,7 +7,19 @@
     tools:context=".sign_up">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="가입"
+        android:textColor="#8C8C8C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radi_male" />
+
+    <Button
+        android:id="@+id/btn_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -17,11 +29,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName10"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+        app:layout_constraintStart_toEndOf="@+id/edit_phone"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/edit_phone"
         android:layout_width="278dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
@@ -30,10 +42,10 @@
         android:inputType="textPersonName"
         android:textColor="#E0E0E0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName9"
+        android:id="@+id/edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -44,10 +56,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword6" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_pw2" />
 
     <EditText
-        android:id="@+id/editTextTextPassword6"
+        android:id="@+id/edit_pw2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -57,10 +69,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword5" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_pw" />
 
     <EditText
-        android:id="@+id/editTextTextPassword5"
+        android:id="@+id/edit_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -70,10 +82,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_id" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/edit_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -100,7 +112,7 @@
         app:layout_constraintVertical_bias="0.095" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radi_male"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="남"
@@ -117,15 +129,15 @@
         android:text="성별입력"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_phone" />
 
     <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/radi_female"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="여"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="@+id/radioButton"
+        app:layout_constraintBottom_toBottomOf="@+id/radi_male"
+        app:layout_constraintTop_toTopOf="@+id/radi_male"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="207dp" />
 
