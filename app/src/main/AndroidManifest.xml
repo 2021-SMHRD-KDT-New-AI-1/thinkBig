@@ -13,11 +13,14 @@
         android:theme="@style/Theme.Weather"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Edit_Profile"
+            android:exported="true" />
+        <activity
             android:name=".sign_up"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
