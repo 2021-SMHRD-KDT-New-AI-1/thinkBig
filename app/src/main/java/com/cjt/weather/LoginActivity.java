@@ -50,63 +50,48 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "http://172.30.1.28:3002/LoginTest";
 
-                //JSON형식으로 데이터 통신을 진행합니다!
-                JSONObject testjson = new JSONObject();
-                try {
-                    //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
-                    testjson.put("id", et_id.getText().toString());
-                    testjson.put("pw", et_pw.getText().toString());
-                    String jsonString = testjson.toString(); //완성된 json 포맷
+                String url = "http://172.30.1.29:3002/AllSelect";
 
-                    //이제 전송해볼까요?
-                    final RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                    final JsonObjectRequest jsonObjectRequest
-                            = new JsonObjectRequest(
-                                    Request.Method.POST,
-                                    url,
-                                    testjson,
-                                    new Response.Listener<JSONObject>() {
 
-                        //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
+                StringRequest jsonObjectRequest = new StringRequest(
+                        Request.Method.GET,
+                        url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
 
-                                //받은 json형식의 응답을 받아
-                                JSONObject jsonObject = new JSONObject(response.toString());
+                                    JSONArray jsonArray = new JSONArray(response.toString());
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject info = (JSONObject) jsonArray.get(i);
 
-                                //key값에 따라 value값을 쪼개 받아옵니다.
-                                String resultId = jsonObject.getString("approve_id");
-                                String resultPassword = jsonObject.getString("approve_pw");
+                                        String resultId = info.getString("id");
+                                        String resultPassword = info.getString("pw");
 
-                                //만약 그 값이 같다면 로그인에 성공한 것입니다.
-                                if(resultId.equals("OK") & resultPassword.equals("OK")){
 
-                                    //이 곳에 성공 시 화면이동을 하는 등의 코드를 입력하시면 됩니다.
-                                }else{
-                                    //로그인에 실패했을 경우 실행할 코드를 입력하시면 됩니다.
+                                        if (et_id.equals(resultId) && et_pw.equals(resultPassword)) {
+                                            Intent intent = new Intent(LoginActivity.this, sign_up.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "ID나 PW를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
-                        }
-                        //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
-                            //Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                    requestQueue.add(jsonObjectRequest);
-                    //
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                            }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                requestQueue.add(jsonObjectRequest);
 
             }
         });
