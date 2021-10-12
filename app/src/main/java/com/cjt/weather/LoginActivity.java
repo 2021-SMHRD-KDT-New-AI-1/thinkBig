@@ -51,49 +51,48 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String url = "http://172.30.1.29:3002/Login";
-                try {
-                    JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("id", et_id.getText().toString());
-                    jsonObject.put("pw", et_pw.getText().toString());
-                    String jsonString = jsonObject.toString();
+                String url = "http://172.30.1.29:3002/AllSelect";
 
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, jsonObject, new Response.Listener<JSONObject>() {
 
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
+                StringRequest jsonObjectRequest = new StringRequest(
+                        Request.Method.GET,
+                        url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
 
-                                JSONObject jsonObject = new JSONObject(response.toString());
+                                    JSONArray jsonArray = new JSONArray(response.toString());
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject info = (JSONObject) jsonArray.get(i);
 
-                                String resultId = jsonObject.getString("db_id");
-                                String resultPassword = jsonObject.getString("db_pw");
+                                        String resultId = info.getString("id");
+                                        String resultPassword = info.getString("pw");
 
-                                if (resultId.equals("OK") & resultPassword.equals("OK")) {
-                                    Intent intent = new Intent(LoginActivity.this, sign_up.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "ID나 PW를 확인해주세요.", Toast.LENGTH_SHORT).show();
+
+                                        if (et_id.equals(resultId) && et_pw.equals(resultPassword)) {
+                                            Intent intent = new Intent(LoginActivity.this, sign_up.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "ID나 PW를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
                             }
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            error.printStackTrace();
-                            Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
-                    jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                    requestQueue.add(jsonObjectRequest);
+                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                requestQueue.add(jsonObjectRequest);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             }
         });
     }
