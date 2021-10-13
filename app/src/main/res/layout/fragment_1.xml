@@ -176,12 +176,15 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_margin="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="18dp"
         android:text="온도에 따라 바뀌는 곳"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_weather"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_post"
@@ -204,11 +207,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/tv_weather"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cloudy" />
 
     <ScrollView

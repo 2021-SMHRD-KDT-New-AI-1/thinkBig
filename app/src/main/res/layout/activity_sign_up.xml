@@ -6,66 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".sign_up">
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="가입"
-        android:textColor="#8C8C8C"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/main_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radi_male" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textColor="#8C8C8C"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="휴대폰 번호 (숫자만 입력)"
+        android:inputType="textPersonName"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_phone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name2" />
+
+    <RadioButton
+        android:id="@+id/radi_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="남"
+        app:layout_constraintBottom_toBottomOf="@+id/radi_female"
+        app:layout_constraintEnd_toStartOf="@+id/radi_female"
+        app:layout_constraintTop_toTopOf="@+id/radi_female"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioButton
+        android:id="@+id/radi_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="여"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <Button
         android:id="@+id/btn_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginEnd="24dp"
         android:text="인증번호"
         android:textColor="#8C8C8C"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.636"
-        app:layout_constraintStart_toEndOf="@+id/edit_phone"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+        app:layout_constraintTop_toTopOf="@+id/edit_phone"
+        app:layout_constraintVertical_bias="0.333" />
 
     <EditText
-        android:id="@+id/edit_phone"
-        android:layout_width="278dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="휴대폰 번호(숫자만입력)"
-        android:inputType="textPersonName"
-        android:textColor="#E0E0E0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
-
-    <EditText
-        android:id="@+id/edit_name"
+        android:id="@+id/edit_id"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="이름 입력"
+        android:hint="이메일 아이디 입력"
         android:inputType="textPersonName"
         android:textColor="#E0E0E0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_phone2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <EditText
         android:id="@+id/edit_pw2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="비밀번호 확인"
         android:inputType="textPassword"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,70 +114,62 @@
         android:id="@+id/edit_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="비밀번호 입력"
         android:inputType="textPassword"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_id" />
 
+    <Button
+        android:id="@+id/btn_phone2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="아이디확인"
+        android:textColor="#8C8C8C"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edit_id"
+        app:layout_constraintVertical_bias="0.666" />
+
     <EditText
-        android:id="@+id/edit_id"
+        android:id="@+id/edit_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="아이디 입력"
+        android:hint="이름 입력"
         android:inputType="textPersonName"
         android:textColor="#E0E0E0"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_pw2" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="115dp"
-        android:layout_height="25dp"
-        android:layout_marginEnd="156dp"
-        android:text="회원가입하기"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
-
-    <RadioButton
-        android:id="@+id/radi_male"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edit_name2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="남"
-        app:layout_constraintBottom_toBottomOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView18"
-        tools:layout_editor_absoluteX="146dp" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="44dp"
-        android:text="성별입력"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_phone" />
-
-    <RadioButton
-        android:id="@+id/radi_female"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="여"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="닉네임 입력"
+        android:inputType="textPersonName"
+        android:textColor="#E0E0E0"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/radi_male"
-        app:layout_constraintTop_toTopOf="@+id/radi_male"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="207dp" />
+        app:layout_constraintEnd_toStartOf="@+id/radi_male"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radi_male" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
