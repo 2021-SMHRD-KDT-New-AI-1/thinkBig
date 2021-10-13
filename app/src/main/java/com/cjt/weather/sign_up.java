@@ -19,7 +19,7 @@ import com.android.volley.toolbox.Volley;
 
 public class sign_up extends AppCompatActivity {
 
-    EditText edit_id, edit_pw, edit_pw2, edit_name;
+    EditText edit_id, edit_pw, edit_pw2, edit_name, edit_birthdate;
     Button btn_register;
     RadioButton radi_male, radi_female;
     RequestQueue requestQueue;
@@ -36,6 +36,7 @@ public class sign_up extends AppCompatActivity {
         btn_register = findViewById(R.id.btn_register);
         radi_male = findViewById(R.id.radi_male);
         radi_female = findViewById(R.id.radi_female);
+        edit_birthdate = findViewById(R.id.edit_birthdate);
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -48,6 +49,14 @@ public class sign_up extends AppCompatActivity {
                 String pw = edit_pw.getText().toString();
                 String pw2 = edit_pw2.getText().toString();
                 String name = edit_name.getText().toString();
+
+                String birthdate = edit_birthdate.getText().toString();
+                String year = birthdate.substring(0,4);
+                String month= birthdate.substring(4,6);
+                String day= birthdate.substring(6);
+                String date_result=year+"-"+month+"-"+day;
+
+
                 String url = "http://172.30.1.29:3002/Gaip?id=";
                 url += id;
                 url += "&pw=" + pw;

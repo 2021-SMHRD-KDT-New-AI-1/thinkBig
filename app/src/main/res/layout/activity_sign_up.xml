@@ -42,9 +42,9 @@
         android:textColor="#E0E0E0"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_phone"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
     <RadioButton
         android:id="@+id/radi_male"
@@ -63,14 +63,15 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:text="여"
+        app:layout_constraintBottom_toBottomOf="@+id/edit_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+        app:layout_constraintTop_toTopOf="@+id/edit_name" />
 
     <Button
         android:id="@+id/btn_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="20dp"
         android:text="인증번호"
         android:textColor="#8C8C8C"
         app:layout_constraintBottom_toBottomOf="@+id/edit_phone"
@@ -144,32 +145,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
         android:ems="10"
         android:hint="이름 입력"
         android:inputType="textPersonName"
         android:textColor="#E0E0E0"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/radi_male"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_birthdate" />
 
     <EditText
-        android:id="@+id/edit_name2"
+        android:id="@+id/edit_birthdate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="닉네임 입력"
+        android:hint="생년월일을 입력하시오 (예: 19900101)"
         android:inputType="textPersonName"
-        android:textColor="#E0E0E0"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/radi_male"
-        app:layout_constraintEnd_toStartOf="@+id/radi_male"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/radi_male" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_pw2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
