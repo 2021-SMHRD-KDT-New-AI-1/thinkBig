@@ -3,6 +3,7 @@ package com.cjt.weather;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +35,8 @@ public class Edit_Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                edt_pr_nick.setText(edt_pr_nick.getText());
+                edt_pr_nick.setText(edt_pr_nick.getText().toString());
+                Log.d("확인", edt_pr_nick.getText().toString());
             }
         });
     }
