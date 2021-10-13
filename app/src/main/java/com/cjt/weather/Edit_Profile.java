@@ -26,10 +26,6 @@ public class Edit_Profile extends AppCompatActivity {
 
         btn_edit4=findViewById(R.id.btn_edit4);
         btn_edit5=findViewById(R.id.btn_edit5);
-        btn_edit6=findViewById(R.id.btn_edit6);
-
-        edt_pr_nick=findViewById(R.id.edt_pr_nick);
-        edt_pr_message=findViewById(R.id.edt_pr_message);
 
         btn_edit4.setOnClickListener(new View.OnClickListener() {
             @Override
