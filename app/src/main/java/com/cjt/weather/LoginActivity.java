@@ -1,16 +1,17 @@
 package com.cjt.weather;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,8 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "MAIN";
     EditText et_id, et_pw;
     Button btn_login, btn_findid, btn_findpw, btn_join;
     RequestQueue requestQueue;
@@ -42,58 +47,73 @@ public class LoginActivity extends AppCompatActivity {
         btn_findpw = findViewById(R.id.btn_findpw);
         btn_join = findViewById(R.id.btn_join);
 
-
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
+        String url = "http://172.30.1.28:3002/LoginTest";
+
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // 받을 때는 스트링이다! 이거를 제이슨 객체에 넣던지 하면 돼!
+                Log.d("확인", response);
+
+                // 일시적으로 success 라고 써주기.
+                response = "success";
+                if (response.equals("success")) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", et_id.getText().toString());
+                params.put("pw", et_pw.getText().toString());
+                params.put("json_data", et_pw.getText().toString());
+                // params.put("json_data", 제이슨객체.toString());
+                // 제이슨으로 보내는 경우는.. 어레이 보낼 때,, VO (객체로 보낼때)
+
+                return params;
+            }
+        };
+
+        stringRequest.setTag(TAG);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String url = "http://172.30.1.29:3002/AllSelect";
-
-
-                StringRequest jsonObjectRequest = new StringRequest(
-                        Request.Method.GET,
-                        url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                try {
-
-                                    JSONArray jsonArray = new JSONArray(response.toString());
-                                    for (int i = 0; i < jsonArray.length(); i++) {
-                                        JSONObject info = (JSONObject) jsonArray.get(i);
-
-                                        String resultId = info.getString("id");
-                                        String resultPassword = info.getString("pw");
-
-
-                                        if (et_id.equals(resultId) && et_pw.equals(resultPassword)) {
-                                            Intent intent = new Intent(LoginActivity.this, sign_up.class);
-                                            startActivity(intent);
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "ID나 PW를 확인해주세요.", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                            }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                error.printStackTrace();
-                                Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                requestQueue.add(jsonObjectRequest);
-
+                requestQueue.add(stringRequest);
             }
         });
+
+        btn_join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, sign_up.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    // 액티비티가 꺼지거나 사라졌을 때 큐삭제
+    // 열었으니까 닫는 코드
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (requestQueue != null) {
+            requestQueue.cancelAll(TAG);
+        }
     }
 }
