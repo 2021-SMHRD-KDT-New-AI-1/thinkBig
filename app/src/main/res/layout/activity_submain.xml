@@ -6,10 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="게시물 추가"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view18"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+    <ImageView
+        android:id="@+id/imageButton11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:background="#FFFFFF"
+        android:maxWidth="35dp"
+        android:maxHeight="35dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/check_mark"
+        app:layout_constraintBottom_toBottomOf="@+id/textView35"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView35" />
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:background="#4C4C4C"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,15 +88,15 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view18"
         app:srcCompat="@drawable/cloudy" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="30dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -90,31 +132,30 @@
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:text="날씨에 따라 달라지는 부분"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.79" />
 
     <ImageButton
         android:id="@+id/imageButton4"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
         android:background="#FFFFFF"
         android:maxWidth="35dp"
@@ -128,7 +169,7 @@
         android:id="@+id/imageButton5"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
         android:background="#FFFFFF"
@@ -143,7 +184,7 @@
         android:id="@+id/imageButton6"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
         android:background="#FFFFFF"
