@@ -20,6 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,13 +93,17 @@ public class sign_up extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Writer writer = new StringWriter();
+                        error.printStackTrace(new PrintWriter(writer));
+                        String s = writer.toString();
+                        Log.d("asdf", s);
                     }
                 }
         ) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+
                 params.put("id", id);
                 params.put("pw", pw);
                 params.put("pw2", pw2);
@@ -132,7 +139,7 @@ public class sign_up extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("asdf", error.toString());
                     }
                 }
         ) {
@@ -154,8 +161,10 @@ public class sign_up extends AppCompatActivity {
                 id = edit_id.getText().toString();
                 pw = edit_pw.getText().toString();
                 pw2 = edit_pw2.getText().toString();
+                phone = edit_phone.getText().toString();
 
                 // 생년월일 받아서 계산하기!
+
                 String temp_birthdate = edit_birthdate.getText().toString();
                 String year = temp_birthdate.substring(0, 4);
                 String month = temp_birthdate.substring(4, 6);
@@ -165,22 +174,14 @@ public class sign_up extends AppCompatActivity {
 
                 name = edit_name.getText().toString();
 
-                radi_Group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup RadioGroup, int i) {
-                        if (i == R.id.radi_male) {
-                            gender = "male";
-                        } else if (i == R.id.radi_female) {
-                            gender = "female";
-                        }
-                    }
-                });
+                gender = radi_Group.getCheckedRadioButtonId() == R.id.radi_male ? "male" : "female";
 
                 // 비밀번호 확인 -> 다를 경우
                 if (!pw.equals(pw2)) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     requestQueue.add(stringRequest_join);
+                    Log.d("asdf", "정보넘기기 시도");
                 }
             }
         });
