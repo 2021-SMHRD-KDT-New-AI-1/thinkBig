@@ -64,7 +64,7 @@ public class sign_up extends AppCompatActivity {
 
         String url = "http://172.30.1.29:3002/SignUp";
 
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        final StringRequest stringRequest_join = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // response 받을 때는 스트링이다!
@@ -112,7 +112,41 @@ public class sign_up extends AppCompatActivity {
             }
         };
 
-        stringRequest.setTag(TAG);
+        final StringRequest stringRequest_id_identify = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // 응답 종류
+                // 1. can_use_id
+                // 2. existed_id
+
+                Toast toast = null;
+
+                if (response.equals("can_use_id")) {
+                    toast = Toast.makeText(getApplicationContext(), "사용할 수 있는 ID입니다.", Toast.LENGTH_SHORT);
+                } else if (response.equals("existed_id")) {
+                    toast = Toast.makeText(getApplicationContext(), "존재하는 ID입니다. 다른 ID를 입력해주세요.", Toast.LENGTH_SHORT);
+                }
+                toast.show();
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", id);
+
+                return params;
+            }
+        };
+
+        stringRequest_join.setTag(TAG);
+        stringRequest_id_identify.setTag(TAG);
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,8 +180,16 @@ public class sign_up extends AppCompatActivity {
                 if (!pw.equals(pw2)) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
                 } else {
-                    requestQueue.add(stringRequest);
+                    requestQueue.add(stringRequest_join);
                 }
+            }
+        });
+
+
+        btn_id_identify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestQueue.add(stringRequest_id_identify);
             }
         });
     }
