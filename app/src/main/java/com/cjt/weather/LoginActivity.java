@@ -51,20 +51,33 @@ public class LoginActivity extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.29:3002/LoginTest";
+        String url = "http://172.30.1.29:3002/Login";
 
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 // 받을 때는 스트링이다! 이거를 제이슨 객체에 넣던지 하면 돼!
-                Log.d("확인", response);
+                Log.d("로그인 응답 확인", response);
 
-                // 일시적으로 success 라고 써주기.
-                response = "success";
-                if (response.equals("success")) {
+                // 응답 종류
+                // 1. not_exit_id
+                // 2. not_correct_pw
+                // 3. login_success
+
+                Toast toast = null;
+
+                if (response.equals("not_exit_id")) {
+                    toast = Toast.makeText(getApplicationContext(), "ID가 존재하지 않습니다.", Toast.LENGTH_SHORT);
+
+                } else if (response.equals("not_correct_pw")) {
+                    toast = Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.",Toast.LENGTH_SHORT);
+
+                } else if (response.equals("login_success")) {
+                    toast = Toast.makeText(getApplicationContext(), "로그인 성공.",Toast.LENGTH_SHORT);
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
+                toast.show();
             }
         },
                 new Response.ErrorListener() {
