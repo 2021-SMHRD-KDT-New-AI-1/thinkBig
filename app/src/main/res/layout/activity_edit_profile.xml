@@ -47,54 +47,6 @@
         tools:srcCompat="@drawable/rian2" />
 
     <TextView
-        android:id="@+id/edt_pr_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="이름"
-        app:layout_constraintEnd_toEndOf="@+id/edt_pr_name"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toEndOf="@+id/img_pr_img"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edt_pr_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="92dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="이도현"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toEndOf="@+id/img_pr_img"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edt_pr_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="letgo"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/edt_pr_name" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="아이디"
-        app:layout_constraintEnd_toEndOf="@+id/edt_pr_id"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edt_pr_id"
-        app:layout_constraintTop_toBottomOf="@+id/edt_pr_name" />
-
-    <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -105,29 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_pr_img"
         app:layout_constraintVertical_bias="0.211" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="생년월일"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
-        app:layout_constraintTop_toBottomOf="@+id/edt_pr_id"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1994.04.06"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
