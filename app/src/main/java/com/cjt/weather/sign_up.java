@@ -110,7 +110,7 @@ public class sign_up extends AppCompatActivity {
                 params.put("birthdate", birthdate);
                 params.put("name", name);
                 params.put("gender", gender);
-                params.put("phoneNUm", phone);
+                params.put("phone", phone);
 
                 // params.put("json_data", 제이슨객체.toString());
                 // 제이슨으로 보내는 경우는.. Array를 보낼 때 또는 VO(객체로 보낼때)
@@ -174,7 +174,7 @@ public class sign_up extends AppCompatActivity {
 
                 name = edit_name.getText().toString();
 
-                gender = radi_Group.getCheckedRadioButtonId() == R.id.radi_male ? "male" : "female";
+                gender = radi_Group.getCheckedRadioButtonId() == R.id.radi_male ? "남" : "여";
 
                 // 비밀번호 확인 -> 다를 경우
                 if (!pw.equals(pw2)) {
