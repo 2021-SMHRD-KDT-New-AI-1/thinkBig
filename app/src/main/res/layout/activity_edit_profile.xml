@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_pro_img" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/tv_pro_tag"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -68,7 +68,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_edit3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_state_msg" />
 
         <Button
             android:id="@+id/btn_edit5"
@@ -79,9 +79,9 @@
             android:textColor="#3E3E3E"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_state_msg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView13"
+            app:layout_constraintTop_toTopOf="@+id/tv_state_msg"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
@@ -93,9 +93,9 @@
             android:textColor="#3E3E3E"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView22"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_pro_tag"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView22"
+            app:layout_constraintTop_toTopOf="@+id/tv_pro_tag"
             app:layout_constraintVertical_bias="0.636" />
 
         <TextView
@@ -129,13 +129,13 @@
             android:textColor="#3E3E3E"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nick"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView11"
+            app:layout_constraintTop_toTopOf="@+id/tv_nick"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/tv_nick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -152,8 +152,8 @@
             android:background="#4C4C4C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintStart_toStartOf="@+id/tv_nick"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nick" />
 
         <View
             android:id="@+id/view12"
@@ -162,7 +162,7 @@
             android:background="#4C4C4C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/tv_nick"
             app:layout_constraintTop_toTopOf="@+id/textView15" />
 
         <View
@@ -172,7 +172,7 @@
             android:background="#4C4C4C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/tv_nick"
             app:layout_constraintTop_toTopOf="@+id/textView15" />
 
         <View
@@ -182,11 +182,11 @@
             android:background="#4C4C4C"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/tv_nick"
+            app:layout_constraintTop_toBottomOf="@+id/tv_state_msg" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv_state_msg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -211,7 +211,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/pro_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
@@ -222,16 +222,16 @@
         app:srcCompat="@drawable/profile" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_pro_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         android:text="프로필 사진 선택"
         android:textColor="#000000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="@+id/pro_img"
+        app:layout_constraintStart_toStartOf="@+id/pro_img"
+        app:layout_constraintTop_toBottomOf="@+id/pro_img" />
 
     <ImageView
         android:id="@+id/imageButton8"
