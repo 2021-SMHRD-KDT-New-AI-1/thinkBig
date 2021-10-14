@@ -2,12 +2,17 @@ package com.cjt.weather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         // 님들 주석 잘 달아주시고
         // 이 프로젝트 파일로 시작해봅시다!!
+
+
 
         BottomNavigationView nav_view;
 
