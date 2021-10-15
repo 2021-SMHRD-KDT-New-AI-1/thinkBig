@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.29:3002/Login";
+        String url = "http://172.30.1.28:3002/Login";
 
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

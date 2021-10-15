@@ -66,7 +66,7 @@ public class sign_up extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.29:3002/SignUp";
+        String url = "http://172.30.1.28:3002/SignUp";
 
         // 아이디 확인을 위한 값전달.
         final StringRequest stringRequest_id_identify = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
