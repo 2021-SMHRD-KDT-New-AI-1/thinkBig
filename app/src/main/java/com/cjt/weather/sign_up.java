@@ -154,8 +154,9 @@ public class sign_up extends AppCompatActivity {
             }
         };
 
-        stringRequest_join.setTag(TAG);
         stringRequest_id_identify.setTag(TAG);
+        stringRequest_join.setTag(TAG);
+
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
