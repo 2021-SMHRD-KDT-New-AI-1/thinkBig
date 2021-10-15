@@ -173,18 +173,12 @@ public class sign_up extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("test", "onClick: 회원가입 확인");
                 id = edit_id.getText().toString();
-                edit_id.setText(id);
-
                 pw = edit_pw.getText().toString();
-                edit_pw.setText(pw);
                 String pw2 = edit_pw2.getText().toString();
-
                 phone = edit_phone.getText().toString();
-                edit_phone.setText(phone);
 
                 // 생년월일 받아서 계산하기!
                 String temp_birthdate = edit_birthdate.getText().toString();
-                edit_birthdate.setText(temp_birthdate);
                 String year = temp_birthdate.substring(0, 4);
                 String month = temp_birthdate.substring(4, 6);
                 String day = temp_birthdate.substring(6);
@@ -192,13 +186,14 @@ public class sign_up extends AppCompatActivity {
                 birthdate = year + "-" + month + "-" + day;
 
                 name = edit_name.getText().toString();
-                edit_name.setText(name);
 
                 gender = radioGroup.getCheckedRadioButtonId() == R.id.radi_male ? "남" : "여";
 
                 // 비밀번호 확인 -> 다를 경우
                 if (!pw.equals(pw2)) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
+                } else if (temp_birthdate.length()!=8) {
+                    Toast.makeText(getApplicationContext(), "생년월일을 확인해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
                     requestQueue.add(stringRequest_join);
                 }
