@@ -36,12 +36,12 @@ public class sign_up extends AppCompatActivity {
     RequestQueue requestQueue;
 
     // 이너클래스에서 써야해서 전역으로 선언!
-    String id;
-    String pw;
-    String birthdate;
-    String name;
-    String gender;
-    String phone;
+    String id = "";
+    String pw = "";
+    String birthdate = "";
+    String name = "";
+    String gender = "";
+    String phone = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,7 @@ public class sign_up extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.29:3002/SignUp";
+        String url = "http://172.30.1.28:3002/SignUp";
 
         // 아이디 확인을 위한 값전달.
         final StringRequest stringRequest_id_identify = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -171,32 +171,40 @@ public class sign_up extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("test", "onClick: 회원가입 확인");
+                // Log.d("test", "onClick: 회원가입 확인");
                 id = edit_id.getText().toString();
                 pw = edit_pw.getText().toString();
                 String pw2 = edit_pw2.getText().toString();
                 phone = edit_phone.getText().toString();
 
-                // 생년월일 받아서 계산하기!
                 String temp_birthdate = edit_birthdate.getText().toString();
-                String year = temp_birthdate.substring(0, 4);
-                String month = temp_birthdate.substring(4, 6);
-                String day = temp_birthdate.substring(6);
                 // 실제 보낼 생년월일 값
-                birthdate = year + "-" + month + "-" + day;
 
                 name = edit_name.getText().toString();
-
                 gender = radioGroup.getCheckedRadioButtonId() == R.id.radi_male ? "남" : "여";
 
-                // 비밀번호 확인 -> 다를 경우
-                if (!pw.equals(pw2)) {
-                    Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
-                } else if (temp_birthdate.length()!=8) {
-                    Toast.makeText(getApplicationContext(), "생년월일을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                // 값을 모두 입력했을 경우에만!!
+                if (id.length() != 0 && pw.length() != 0 && pw2.length() != 0 && phone.length() != 0 && temp_birthdate.length() != 0 && name.length() != 0 && gender.length() != 0) {
+                    // 비밀번호 확인 -> 다를 경우
+                    if (!pw.equals(pw2)) {
+                        Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
+                    } else if (temp_birthdate.length() != 8) {
+                        Toast.makeText(getApplicationContext(), "생년월일을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    } else if (phone.length() != 11) {
+                        Toast.makeText(getApplicationContext(), "전화번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // 생년월일 받아서 계산하기!
+                        String year = temp_birthdate.substring(0, 4);
+                        String month = temp_birthdate.substring(4, 6);
+                        String day = temp_birthdate.substring(6);
+                        birthdate = year + "-" + month + "-" + day;
+                        requestQueue.add(stringRequest_join);
+                    }
                 } else {
-                    requestQueue.add(stringRequest_join);
+                    Log.d("test", "회원정보 입력안됨.");
+                    Toast.makeText(getApplicationContext(), "회원정보를 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }
