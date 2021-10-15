@@ -24,8 +24,8 @@ public class Edit_Profile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
 
-        btn_edit4=findViewById(R.id.btn_edit4);
-        btn_edit5=findViewById(R.id.btn_edit5);
+//        btn_edit4=findViewById(R.id.btn_edit4);
+//        btn_edit5=findViewById(R.id.btn_edit5);
 
         btn_edit4.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -65,49 +65,19 @@
             android:text="해시태그"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit3"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_state_msg" />
-
-        <Button
-            android:id="@+id/btn_edit5"
-            android:layout_width="63dp"
-            android:layout_height="41dp"
-            android:background="#00ff0000"
-            android:text="편집"
-            android:textColor="#3E3E3E"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_state_msg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_state_msg"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btn_edit3"
-            android:layout_width="63dp"
-            android:layout_height="41dp"
-            android:background="#00ff0000"
-            android:text="편집"
-            android:textColor="#3E3E3E"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_pro_tag"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_pro_tag"
-            app:layout_constraintVertical_bias="0.636" />
+            app:layout_constraintTop_toBottomOf="@+id/view6" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="상태메세지"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view6" />
+            tools:layout_editor_absoluteY="102dp" />
 
         <TextView
             android:id="@+id/textView19"
@@ -120,30 +90,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_edit4"
-            android:layout_width="63dp"
-            android:layout_height="41dp"
-            android:background="#00ff0000"
-            android:text="편집"
-            android:textColor="#3E3E3E"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_nick"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_nick"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/tv_nick"
+        <View
+            android:id="@+id/view12"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:text="사용자의 닉네임에 따라 달라지는 부분"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            android:background="#4C4C4C"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pro_tag" />
 
         <View
             android:id="@+id/view6"
@@ -151,62 +104,71 @@
             android:layout_height="1dp"
             android:background="#4C4C4C"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_nick"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nick" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_pr_msg" />
 
-        <View
-            android:id="@+id/view12"
+        <EditText
+            android:id="@+id/ed_pr_nick"
             android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#4C4C4C"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="변경할 닉네임을 입력하세요"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#2B2B2B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+
+        <EditText
+            android:id="@+id/edt_pr_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:ems="10"
+            android:hint="변경할 상태메세지를 입력하세요"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#2B2B2B"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <EditText
+            android:id="@+id/edt_pr_hashtag"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@null"
+            android:ems="10"
+            android:gravity="left"
+            android:hint=" #흐림    #맑음"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#2B2B2B"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_nick"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
-
-        <View
-            android:id="@+id/view13"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:background="#4C4C4C"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_nick"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view12"
+            app:layout_constraintVertical_bias="0.0" />
 
         <View
             android:id="@+id/view7"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:background="#4C4C4C"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tv_nick"
-            app:layout_constraintTop_toBottomOf="@+id/tv_state_msg" />
+            app:layout_constraintTop_toBottomOf="@+id/ed_pr_nick" />
 
-        <TextView
-            android:id="@+id/tv_state_msg"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:text="사용자의 상태메세지에 따라 달라지는 부분"
-            app:layout_constraintEnd_toStartOf="@+id/btn_edit5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:padding="5dp"
-            android:text="해시태그 값을 받아오는 부분"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_edit3" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.89" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -233,21 +195,6 @@
         app:layout_constraintStart_toStartOf="@+id/pro_img"
         app:layout_constraintTop_toBottomOf="@+id/pro_img" />
 
-    <ImageView
-        android:id="@+id/imageButton8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:background="#FFFFFF"
-        android:maxWidth="35dp"
-        android:maxHeight="35dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/check_mark"
-        app:layout_constraintBottom_toBottomOf="@+id/textView32"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView32" />
-
     <View
         android:id="@+id/view8"
         android:layout_width="match_parent"
@@ -260,5 +207,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <ImageButton
+        android:id="@+id/btn_pr_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:background="#FFFFFF"
+        android:maxWidth="35dp"
+        android:maxHeight="35dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/check_mark"
+        app:layout_constraintBottom_toBottomOf="@+id/textView32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView32"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
