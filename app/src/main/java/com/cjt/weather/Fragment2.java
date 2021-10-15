@@ -62,16 +62,16 @@ public class Fragment2 extends Fragment {
         );
         //Drawable폴더에서 이미지 파일 가져온다
         List<PostTitem> postTitems = new ArrayList<>();
-        postTitems.add(new PostTitem(R.drawable.image1));
-        postTitems.add(new PostTitem(R.drawable.image2));
-        postTitems.add(new PostTitem(R.drawable.image3));
-        postTitems.add(new PostTitem(R.drawable.image4));
-        postTitems.add(new PostTitem(R.drawable.image5));
-        postTitems.add(new PostTitem(R.drawable.image6));
-        postTitems.add(new PostTitem(R.drawable.image7));
-        postTitems.add(new PostTitem(R.drawable.image8));
-        postTitems.add(new PostTitem(R.drawable.image9));
-        postTitems.add(new PostTitem(R.drawable.image10));
+        postTitems.add(new PostTitem(R.drawable.image1, "고구마"));
+        postTitems.add(new PostTitem(R.drawable.image2, "감자"));
+        postTitems.add(new PostTitem(R.drawable.image3, "옥수수"));
+        postTitems.add(new PostTitem(R.drawable.image4, "가지"));
+        postTitems.add(new PostTitem(R.drawable.image5, "양파"));
+        postTitems.add(new PostTitem(R.drawable.image6, "최진태"));
+        postTitems.add(new PostTitem(R.drawable.image7, "김지윤"));
+        postTitems.add(new PostTitem(R.drawable.image8, "이진화"));
+        postTitems.add(new PostTitem(R.drawable.image9, "전진완"));
+        postTitems.add(new PostTitem(R.drawable.image10, "이도현"));
 
         postRecyclerView.setAdapter(new PostAdapter(postTitems));
 
