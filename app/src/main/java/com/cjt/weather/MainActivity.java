@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId()==R.id.menu4)
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment4()).commit();
 
-                return false;
+                return true;
             }
         });
 
