@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         nav_view =findViewById(R.id.nav_view);
 
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
+
+
+        nav_view.setSelectedItemId(R.id.menu2);
 
         nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 }else if(item.getItemId()==R.id.menu4)
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment4()).commit();
 
-                return false;
+                return true;
             }
         });
 
