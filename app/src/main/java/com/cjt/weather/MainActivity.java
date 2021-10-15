@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
         // 님들 주석 잘 달아주시고
         // 이 프로젝트 파일로 시작해봅시다!!
 
-
-
         BottomNavigationView nav_view;
 
         nav_view =findViewById(R.id.nav_view);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
 
         nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
