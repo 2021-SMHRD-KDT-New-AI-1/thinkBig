@@ -28,7 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         nav_view =findViewById(R.id.nav_view);
 
+
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
+
+
+        nav_view.setSelectedItemId(R.id.menu2);
 
         nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
