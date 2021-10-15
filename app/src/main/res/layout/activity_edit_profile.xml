@@ -58,16 +58,15 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/tv_pro_tag"
-            android:layout_width="0dp"
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="해시태그"
+            android:layout_marginTop="20dp"
+            android:text="닉네임"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view6" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView20"
@@ -81,15 +80,16 @@
             app:layout_constraintTop_toBottomOf="@+id/view7" />
 
         <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_pro_tag"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="닉네임"
+            android:layout_marginTop="30dp"
+            android:text="해시태그"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/view6" />
 
         <View
             android:id="@+id/view12"
