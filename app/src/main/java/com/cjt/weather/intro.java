@@ -22,7 +22,7 @@ public class intro extends AppCompatActivity {
                 startActivity(intent); //인트로 실행 후 바로 MainActivity로 넘어감.
                 finish();
             }
-        }, 1000); //1초 후 인트로 실행
+        }, 1500); //1.5초 후 인트로 실행
     }
 
     @Override
