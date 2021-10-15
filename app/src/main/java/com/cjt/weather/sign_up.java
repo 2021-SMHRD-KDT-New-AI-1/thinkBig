@@ -104,9 +104,9 @@ public class sign_up extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
+                params.put("btn", "btnjoin");
                 params.put("id", id);
                 params.put("pw", pw);
-                params.put("pw2", pw2);
                 params.put("birthdate", birthdate);
                 params.put("name", name);
                 params.put("gender", gender);
@@ -146,6 +146,8 @@ public class sign_up extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+
+                params.put("btn", "btnid");
                 params.put("id", id);
 
                 return params;
