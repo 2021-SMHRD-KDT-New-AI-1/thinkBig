@@ -63,7 +63,7 @@ public class Fragment2 extends Fragment {
         //Drawable폴더에서 이미지 파일 가져온다
         List<PostTitem> postTitems = new ArrayList<>();
 
-        postTitems.add(new PostTitem(R.drawable.image2, "감자",));
+        postTitems.add(new PostTitem(R.drawable.image2, "감자"));
         postTitems.add(new PostTitem(R.drawable.image3, "옥수수"));
         postTitems.add(new PostTitem(R.drawable.image4, "가지"));
         postTitems.add(new PostTitem(R.drawable.image5, "양파"));
