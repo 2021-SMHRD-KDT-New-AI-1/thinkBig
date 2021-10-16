@@ -49,19 +49,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     class PostViewHolder extends RecyclerView.ViewHolder{
 
-        RoundedImageView posImageView;
-        TextView textView;
+        RoundedImageView posImageView; //이미지
+        TextView textView;  //밑에 글
+        TextView textView1;  //프로필 텍스트
+        TextView textView2;  //프로필 옆 텍스트
 
         PostViewHolder(@NonNull View itemView) {
             super(itemView);
             posImageView = itemView.findViewById(R.id.imagePost);
             textView = itemView.findViewById(R.id.post_item_text);
+            textView1 = itemView.findViewById(R.id.text_profile);
+            textView2 = itemView.findViewById(R.id.textview_comment);
+
         }
         void setPosImageView(PostTitem postTitem){
 
             //여기에 코드 입력해서
             posImageView.setImageResource(postTitem.getImage());
             textView.setText(postTitem.getText());
+
         }
     }
 }

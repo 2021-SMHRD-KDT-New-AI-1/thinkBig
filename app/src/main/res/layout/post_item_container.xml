@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,13 +10,15 @@
         android:id="@+id/imagePost"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="7.5dp"
         android:adjustViewBounds="true"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
         app:riv_corner_radius="12dp">
+
         post_item_container
 
 
@@ -25,8 +28,9 @@
         android:id="@+id/post_item_text"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="시켜줘, 금잔디 명예소방관"
+        android:layout_margin="7.5dp"
         android:paddingLeft="5dp"
+        android:text="시켜줘, 금잔디 명예소방관"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,5 +42,39 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.93" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <TextView
+        android:id="@+id/text_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="28dp"
+        android:text="UserID"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imagePost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_comment"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_margin="7.5dp"
+        android:layout_marginStart="20dp"
+        android:text="프로필 내용"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/text_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_profile"
+        app:layout_constraintTop_toTopOf="@+id/text_profile"
+        app:layout_constraintVertical_bias="0.617" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

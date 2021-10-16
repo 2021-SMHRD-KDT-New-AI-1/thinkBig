@@ -58,12 +58,12 @@ public class Fragment2 extends Fragment {
         //리싸이클시작
         RecyclerView postRecyclerView =view.findViewById(R.id.postsRecyclerView);
         postRecyclerView.setLayoutManager(
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         );
         //Drawable폴더에서 이미지 파일 가져온다
         List<PostTitem> postTitems = new ArrayList<>();
 
-        postTitems.add(new PostTitem(R.drawable.image2, "감자"));
+        postTitems.add(new PostTitem(R.drawable.image2, "감자",));
         postTitems.add(new PostTitem(R.drawable.image3, "옥수수"));
         postTitems.add(new PostTitem(R.drawable.image4, "가지"));
         postTitems.add(new PostTitem(R.drawable.image5, "양파"));
