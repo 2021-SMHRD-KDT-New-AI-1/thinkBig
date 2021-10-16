@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         nav_view = findViewById(R.id.nav_view);
         from = getIntent().getStringExtra("from");
 
+        nav_view.setSelectedItemId(R.id.menu2);
+
         if (from.equals("Login")) {
             // 로그인하고 메인 액티비티 오자마자 그리드 화면 보여주기!
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
