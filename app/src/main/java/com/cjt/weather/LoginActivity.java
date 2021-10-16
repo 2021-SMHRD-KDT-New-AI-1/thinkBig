@@ -74,6 +74,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else if (response.equals("login_success")) {
                     toast = Toast.makeText(getApplicationContext(), "로그인 성공.",Toast.LENGTH_SHORT);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("from", "Login");
+                    startActivity(intent);
                 }
                 toast.show();
             }
@@ -106,9 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 requestQueue.add(stringRequest);
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                intent.putExtra("from", "Login");
-                startActivity(intent);
+
             }
         });
 
