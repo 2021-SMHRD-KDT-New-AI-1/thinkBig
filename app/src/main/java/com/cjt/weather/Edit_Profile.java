@@ -34,9 +34,9 @@ public class Edit_Profile extends AppCompatActivity {
     EditText ed_pro_nick, edt_pro_msg, edt_pro_hashtag;
     Button btn_pro_img;
     RequestQueue requestQueue;
+    SharedPreferences spf;
 
     String id = "";
-    String pro_img_path = "";
     String nick = "";
     String state_msg = "";
     String pro_tag = "";
@@ -52,7 +52,7 @@ public class Edit_Profile extends AppCompatActivity {
         edt_pro_hashtag = findViewById(R.id.edt_pr_hashtag);
         btn_pro_img = findViewById(R.id.btn_pr_img);
 
-        SharedPreferences spf = getSharedPreferences("id", Context.MODE_PRIVATE);
+        spf = getSharedPreferences("id", Context.MODE_PRIVATE);
         id = spf.getString("id", "default_id");
         // spf.getString("id", 만약 사용할 데이터가 없을 때 디폴트 값 넣어주기);
 
@@ -75,14 +75,9 @@ public class Edit_Profile extends AppCompatActivity {
                     toast = Toast.makeText(getApplicationContext(), "프로필 설정 완료.", Toast.LENGTH_SHORT);
                     Intent intent = new Intent(Edit_Profile.this, MainActivity.class);
                     intent.putExtra("from", "edt_profile");
-                    // 다른 액티비티에 값을 이렇게 넘겨주는구나!
-
-                    SharedPreferences spf = getSharedPreferences("pro_info", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = spf.edit();
-                    editor.putString("nick", nick);
-                    editor.putString("state_msg", state_msg);
-                    editor.putString("pro_tag", pro_tag);
-                    editor.commit();
+                    intent.putExtra("nick", nick);
+                    intent.putExtra("state_msg", state_msg);
+                    intent.putExtra("pro_tag", pro_tag);
 
                     startActivity(intent);
                 } else if (response.equals("edit_pro_fail")) {
