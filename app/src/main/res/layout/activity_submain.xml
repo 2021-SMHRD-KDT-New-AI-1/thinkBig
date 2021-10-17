@@ -256,7 +256,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tv_nick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -276,7 +276,7 @@
                 app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/tv_state_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

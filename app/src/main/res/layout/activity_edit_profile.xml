@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_pro_img" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_pr_img" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -185,7 +185,7 @@
         app:srcCompat="@drawable/profile" />
 
     <Button
-        android:id="@+id/btn_pro_img"
+        android:id="@+id/btn_pr_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"

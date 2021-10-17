@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 
 
-public class Fragment1 extends Fragment {
+public class F1AddBoard extends Fragment {
 
     ImageButton imgbtn;
     Button btn_edit1, btn_edit2, btn_edit3;

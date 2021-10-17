@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment2 extends Fragment {
+public class F2Grid extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,14 +25,14 @@ public class Fragment2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment2() {
+    public F2Grid() {
         // Required empty public constructor
     }
 
 
 
-    public static Fragment2 newInstance(String param1, String param2) {
-        Fragment2 fragment = new Fragment2();
+    public static F2Grid newInstance(String param1, String param2) {
+        F2Grid fragment = new F2Grid();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

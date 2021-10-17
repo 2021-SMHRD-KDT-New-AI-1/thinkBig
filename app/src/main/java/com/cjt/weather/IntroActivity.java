@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import android.os.Bundle;
 
-public class intro extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

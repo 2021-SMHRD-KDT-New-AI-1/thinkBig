@@ -2,8 +2,9 @@ package com.cjt.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,18 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,10 +65,16 @@ public class LoginActivity extends AppCompatActivity {
                     toast = Toast.makeText(getApplicationContext(), "ID가 존재하지 않습니다.", Toast.LENGTH_SHORT);
 
                 } else if (response.equals("not_correct_pw")) {
-                    toast = Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.",Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT);
 
                 } else if (response.equals("login_success")) {
-                    toast = Toast.makeText(getApplicationContext(), "로그인 성공.",Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "로그인 성공.", Toast.LENGTH_SHORT);
+
+                    SharedPreferences spf = getSharedPreferences("id", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("id", et_id.getText().toString());
+                    editor.commit();
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("from", "Login");
                     startActivity(intent);
@@ -93,7 +94,6 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", et_id.getText().toString());
                 params.put("pw", et_pw.getText().toString());
-                params.put("json_data", et_pw.getText().toString());
                 // params.put("json_data", 제이슨객체.toString());
                 // 제이슨으로 보내는 경우는.. 어레이 보낼 때,, VO (객체로 보낼때)
 
@@ -106,17 +106,14 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 requestQueue.add(stringRequest);
-
-
             }
         });
 
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, sign_up.class);
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });

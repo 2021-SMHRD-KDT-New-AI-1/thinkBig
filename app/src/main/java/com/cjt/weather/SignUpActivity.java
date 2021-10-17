@@ -26,7 +26,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class sign_up extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private static final String TAG = "MAIN";
     EditText edit_id, edit_pw, edit_pw2, edit_birthdate, edit_name, edit_phone;
@@ -119,7 +119,7 @@ public class sign_up extends AppCompatActivity {
                 Toast toast = null;
                 if (response.equals("join_success")) {
                     toast = Toast.makeText(getApplicationContext(), "회원가입 성공.", Toast.LENGTH_SHORT);
-                    Intent intent = new Intent(sign_up.this, LoginActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } else if (response.equals("join_fail")) {
                     toast = Toast.makeText(getApplicationContext(), "정보를 다시 확인해주세요.", Toast.LENGTH_SHORT);

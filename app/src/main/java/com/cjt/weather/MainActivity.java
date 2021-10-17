@@ -2,17 +2,12 @@ package com.cjt.weather;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     // 구황작물님들 주석 잘 달아주시고
@@ -34,25 +29,25 @@ public class MainActivity extends AppCompatActivity {
 
         if (from.equals("Login")) {
             // 로그인하고 메인 액티비티 오자마자 그리드 화면 보여주기!
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new F2Grid()).commit();
         } else if (from.equals("edt_profile")) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment4()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new F4SetUp()).commit();
         }
 
         nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.menu1) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment1()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new F1AddBoard()).commit();
 
                 } else if (item.getItemId() == R.id.menu2) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment2()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new F2Grid()).commit();
 
                 } else if (item.getItemId() == R.id.menu3) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment3()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new F3List()).commit();
 
                 } else if (item.getItemId() == R.id.menu4)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new Fragment4()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new F4SetUp()).commit();
 
                 return true;
             }
