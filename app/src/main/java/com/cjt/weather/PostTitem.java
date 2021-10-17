@@ -20,6 +20,7 @@ public class PostTitem {
     }
 
     public int getImage() {
+
         return image;
     }
 }
