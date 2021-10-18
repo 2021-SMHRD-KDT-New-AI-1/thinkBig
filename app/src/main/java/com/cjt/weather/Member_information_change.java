@@ -29,70 +29,62 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Member_information_change<spf> extends AppCompatActivity {
-    private static final String TAG = "MAIN";
 
-    TextView tv_name1, tv_name2, tv_birthdate, tv_phone;
-    EditText et_pw1, et_pw2;
-    Button btn_et_phone, btn_et_pw;
-    ImageButton btn_send;
+    TextView tv_member_info_name, tv_member_info_birthdate;
+    EditText edt_member_info_phone, edt_member_info_cur_pw, edt_member_info_new_pw;
+    Button btn_member_info_phone_change, btn_member_info_pw_change;
     RequestQueue requestQueue;
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
+    String TAG = "MAIN";
 
-    String id = "";
-    String pw = "";
-    String phone = "";
+    String id = ""; // 디비에 키값 보내줘야함!
+    // 보여줄 정보
     String name = "";
     String birthdate = "";
-    private SharedPreferences spf;
-    private SharedPreferences spf1;
-    private SharedPreferences spf2;
-
+    // 수정할 정보
+    String phone = "";
+    String cur_pw = "";
+    String new_pw = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_information_change);
 
-        tv_name1 = findViewById(R.id.tv_name1);
-        tv_name2 = findViewById(R.id.tv_name2);
-        tv_birthdate = findViewById(R.id.tv_name2);
-        tv_phone = findViewById(R.id.tv_phone);
-        et_pw1 = findViewById(R.id.et_pw1);
-        et_pw2 = findViewById(R.id.et_pw2);
-        btn_et_phone = findViewById(R.id.btn_et_phone);
-        btn_et_pw = findViewById(R.id.btn_et_pw);
-        btn_send = findViewById(R.id.btn_send);
+        tv_member_info_name = findViewById(R.id.tv_member_info_name);
+        tv_member_info_birthdate = findViewById(R.id.tv_member_info_birthdate);
+        edt_member_info_phone = findViewById(R.id.edt_member_info_phone);
+        edt_member_info_cur_pw = findViewById(R.id.edt_member_info_cur_pw);
+        edt_member_info_new_pw = findViewById(R.id.edt_member_info_new_pw);
+        btn_member_info_phone_change = findViewById(R.id.btn_member_info_phone_change);
+        btn_member_info_pw_change = findViewById(R.id.btn_member_info_pw_change);
 
-        spf = getSharedPreferences("id", Context.MODE_PRIVATE);
-        spf1 = getSharedPreferences("name", Context.MODE_PRIVATE);
-        spf2 = getSharedPreferences("birthdate", Context.MODE_PRIVATE);
-        id = spf.getString("id", "default_id");
-        name = spf.getString("name", "default_name");
-        birthdate = spf.getString("birthdate", "default_birthdate");
+        spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        editor_user_info = spf_user_info.edit();
+        id = spf_user_info.getString("id", "default_id");
+        //name = spf_user_info.getString("name", "default_name");
+        //birthdate = spf_user_info.getString("birthdate", "default_birthdate");
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.29:3002/edit_user";
+        String url = "http://172.30.1.28:3002/edit_user";
 
-        final StringRequest stringRequest_edit_user = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        // 폰번호 갱신 코드
+        final StringRequest stringRequest_change_phone = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("edit_user 응답 확인", response);
-                // 응답 종류
-                // 1. edit_pro_success
-                // 2. edit_pro_fail
+                Log.d("user_info_change_phone 응답 확인", response);
 
                 Toast toast = null;
                 if (response.equals("success")) {
-                    toast = Toast.makeText(getApplicationContext(), "프로필 설정 완료.", Toast.LENGTH_SHORT);
-                    Intent intent = new Intent(Member_information_change.this, MainActivity.class);
-                    intent.putExtra("from", "Member_information_change");
-                    intent.putExtra("pw", pw);
-                    intent.putExtra("phone", phone);
-                    startActivity(intent);
+                    toast = Toast.makeText(getApplicationContext(), "휴대폰번호 수정 완료", Toast.LENGTH_SHORT);
+                    editor_user_info.putString("phone", phone);
+                    editor_user_info.commit();
                 } else if (response.equals("fail")) {
-                    toast = Toast.makeText(getApplicationContext(), "회원정보 수정 실패", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(getApplicationContext(), "휴대폰번호 수정 실패", Toast.LENGTH_SHORT);
                 }
                 toast.show();
             }
@@ -111,29 +103,80 @@ public class Member_information_change<spf> extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("btn", "phone");
                 params.put("id", id);
-                params.put("name", name);
-                params.put("birthdate", birthdate);
-                params.put("pw", pw);
                 params.put("phone", phone);
+                //params.put("birthdate", birthdate);
 
                 return params;
             }
         };
 
-        stringRequest_edit_user.setTag(TAG);
-        btn_send.setOnClickListener(new View.OnClickListener() {
+        // 비밀번호 변경하기
+        final StringRequest stringRequest_change_pw = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("user_info_change_pw 응답 확인", response);
+
+                Toast toast = null;
+                if (response.equals("success")) {
+                    toast = Toast.makeText(getApplicationContext(), "비밀번호 수정 완료", Toast.LENGTH_SHORT);
+                    editor_user_info.putString("pw", new_pw);
+                    editor_user_info.commit();
+                } else if (response.equals("fail")) {
+                    toast = Toast.makeText(getApplicationContext(), "비밀번호 수정 완료", Toast.LENGTH_SHORT);
+                }
+                toast.show();
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Writer writer = new StringWriter();
+                        error.printStackTrace(new PrintWriter(writer));
+                        String s = writer.toString();
+                        Log.d("edit_user 확인", s);
+                    }
+                }
+        ) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("btn", "pw");
+                params.put("id", id);
+                params.put("pw", new_pw);
+                //params.put("birthdate", birthdate);
+
+                return params;
+            }
+        };
+
+        stringRequest_change_phone.setTag(TAG);
+        stringRequest_change_pw.setTag(TAG);
+
+        // 버튼:핸드폰 번호 변경하기
+        btn_member_info_phone_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pw = et_pw2.getText().toString();
-                phone = tv_phone.getText().toString();
-                requestQueue.add(stringRequest_edit_user);
+                phone = edt_member_info_phone.getText().toString();
+                if (phone.length() != 11) {
+                    Toast.makeText(getApplicationContext(), "번호를 정확히 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    requestQueue.add(stringRequest_change_phone);
+                }
             }
         });
 
-        if (!et_pw1.equals(et_pw2)) {
-            Toast.makeText(getApplicationContext(), "비밀번호가 일치해야 합니다.", Toast.LENGTH_SHORT).show();
-        }
+        // 버튼:비밀번호 변경하기
+        btn_member_info_pw_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cur_pw = edt_member_info_cur_pw.getText().toString();
+                new_pw = edt_member_info_new_pw.getText().toString();
+                requestQueue.add(stringRequest_change_pw);
+            }
+        });
     }
 
     @Override

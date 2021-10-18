@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_id, et_pw;
     Button btn_login, btn_findid, btn_findpw, btn_join;
     RequestQueue requestQueue;
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (response.equals("login_success")) {
                     toast = Toast.makeText(getApplicationContext(), "로그인 성공.", Toast.LENGTH_SHORT);
 
-                    SharedPreferences spf = getSharedPreferences("id", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = spf.edit();
-                    editor.putString("id", et_id.getText().toString());
-                    editor.commit();
+                    spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                    editor_user_info = spf_user_info.edit();
+                    editor_user_info.putString("id", et_id.getText().toString());
+                    editor_user_info.commit();
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("from", "Login");
