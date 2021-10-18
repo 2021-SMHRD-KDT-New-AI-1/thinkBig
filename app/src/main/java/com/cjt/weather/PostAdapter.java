@@ -3,6 +3,7 @@ package com.cjt.weather;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,13 +15,10 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
+    private List<BoardVO> items;
 
-    //여기에 선언??
-
-    private List<PostTitem> postTitems;
-
-    public PostAdapter(List<PostTitem> postTitems) {
-        this.postTitems = postTitems;
+    public PostAdapter(List<BoardVO> items) {
+        this.items = items;
     }
 
     @NonNull
@@ -28,7 +26,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new PostViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.post_item_container,
+                        R.layout.activity_submain,
                         parent,
                         false
                 )
@@ -37,36 +35,61 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        holder.setPosImageView(postTitems.get(position));
-
+        holder.setPosImageView(items.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return postTitems.size();
+        return items.size();
     }
-    //크기
 
-    class PostViewHolder extends RecyclerView.ViewHolder{
+    class PostViewHolder extends RecyclerView.ViewHolder {
 
-        RoundedImageView posImageView; //이미지
-        TextView textView;  //밑에 글
-        TextView textView1;  //프로필 텍스트
-        TextView textView2;  //프로필 옆 텍스트
+        /* // 얘네 선언해주기
+                private String content; // xml에 없음
+                //private String board_tag; // xml에 없음
+                private String like_cnt;
+
+                private String top;
+                private String bottom;
+                private String shoes;
+         */
+
+        //원래 도현이 코드 포스트_아이템_컨테이너에 있음.
+        //RoundedImageView posImageView; //이미지
+        ImageView imgView;
+        TextView tv_like_cnt;
+
+        TextView tv_board_top;
+        TextView tv_board_shoes;
+        TextView tv_board_bottom;
+        TextView tv_board_acc;
 
         PostViewHolder(@NonNull View itemView) {
             super(itemView);
-            posImageView = itemView.findViewById(R.id.imagePost);
-            textView = itemView.findViewById(R.id.post_item_text);
-            textView1 = itemView.findViewById(R.id.text_profile);
-            textView2 = itemView.findViewById(R.id.textview_comment);
+            //도현이코드
+            //posImageView = itemView.findViewById(R.id.imagePost);
+            imgView = itemView.findViewById(R.id.imgView);
+            tv_like_cnt = itemView.findViewById(R.id.tv_like_cnt);
+
+            tv_board_top = itemView.findViewById(R.id.tv_board_top);
+            tv_board_shoes = itemView.findViewById(R.id.tv_board_shoes);
+            tv_board_bottom = itemView.findViewById(R.id.tv_board_bottom);
+            tv_board_acc = itemView.findViewById(R.id.tv_board_acc);
 
         }
-        void setPosImageView(PostTitem postTitem){
+
+        void setPosImageView(BoardVO items) {
 
             //여기에 코드 입력해서
-            posImageView.setImageResource(postTitem.getImage());
-            textView.setText(postTitem.getText());
+            //posImageView.setImageResource(postTitem.getImage());
+            imgView.setImageResource(items.getImg());
+            tv_like_cnt.setText(items.getLike_cnt());
+
+            tv_board_top.setText(items.getTop());
+            tv_board_shoes.setText(items.getBottom());
+            tv_board_bottom.setText(items.getShoes());
+            tv_board_acc.setText(items.getAcc());
 
         }
     }

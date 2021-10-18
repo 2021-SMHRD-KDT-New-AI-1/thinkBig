@@ -31,8 +31,8 @@ public class F4SetUp extends Fragment {
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
         btn_edit_member_info = view.findViewById(R.id.btn_edit_member_info);
 
-        tv_nick = view.findViewById(R.id.tv_nick);
-        tv_state_msg = view.findViewById(R.id.tv_state_msg);
+        tv_nick = view.findViewById(R.id.tv_board_shoes);
+        tv_state_msg = view.findViewById(R.id.tv_board_acc);
         tv_pro_tag = view.findViewById(R.id.tv_tag);
 
         // Bundle : 메인 액티비티 -> F4로 값전달받기.
