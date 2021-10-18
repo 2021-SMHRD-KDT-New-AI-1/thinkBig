@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="1.0" />
 
     <View
         android:id="@+id/view18"
@@ -49,13 +49,13 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="#4C4C4C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_like_cnt" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView2"
@@ -157,7 +157,7 @@
             android:id="@+id/imageView7"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -179,10 +179,11 @@
             android:id="@+id/imageView9"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="150dp"
+            android:layout_marginEnd="110dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/shoes" />
 
         <ImageView
@@ -192,8 +193,10 @@
             android:layout_marginEnd="150dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/acc" />
 
         <TextView
@@ -259,6 +262,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:padding="5dp"
+        android:text="글 쓰면 달라지는 부분"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_like_cnt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
