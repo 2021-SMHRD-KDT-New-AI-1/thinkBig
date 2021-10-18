@@ -26,23 +26,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94160587" />
 
-    <Button
-        android:id="@+id/btn_findpw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00ff0000"
-        android:gravity="center"
-        android:letterSpacing="-0.05"
-        android:text="비밀번호 찾기"
-        android:textColor="#000000"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_findid"
-        app:layout_constraintEnd_toStartOf="@+id/btn_join"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_findid"
-        app:layout_constraintTop_toTopOf="@+id/btn_findid"
-        app:layout_constraintVertical_bias="1.0" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -51,24 +34,8 @@
         app:layout_constraintGuide_percent="0.04" />
 
     <Button
-        android:id="@+id/btn_findid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#00ff0000"
-        android:gravity="center"
-        android:letterSpacing="-0.05"
-        android:text="아이디 찾기"
-        android:textColor="#000000"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_findpw"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-    <Button
         android:id="@+id/btn_join"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#00ff0000"
         android:gravity="center"
@@ -76,12 +43,9 @@
         android:text="회원가입"
         android:textColor="#000000"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_findpw"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_findpw"
-        app:layout_constraintTop_toTopOf="@+id/btn_findpw"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <Button
         android:id="@+id/btn_login"

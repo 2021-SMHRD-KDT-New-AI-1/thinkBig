@@ -38,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
         btn_login = findViewById(R.id.btn_login);
-        btn_findid = findViewById(R.id.btn_findid);
-        btn_findpw = findViewById(R.id.btn_findpw);
         btn_join = findViewById(R.id.btn_join);
 
         if (requestQueue == null) {
