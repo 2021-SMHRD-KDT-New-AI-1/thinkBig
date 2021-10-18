@@ -3,6 +3,7 @@ package com.cjt.weather;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +59,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         //원래 도현이 코드 포스트_아이템_컨테이너에 있음.
         //RoundedImageView posImageView; //이미지
         ImageView imgView;
+
+        ImageButton btn_like;
         TextView tv_like_cnt;
 
         TextView tv_board_top;
@@ -65,17 +68,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         TextView tv_board_bottom;
         TextView tv_board_acc;
 
+
         PostViewHolder(@NonNull View itemView) {
             super(itemView);
             //도현이코드
             //posImageView = itemView.findViewById(R.id.imagePost);
             imgView = itemView.findViewById(R.id.imgView);
+            btn_like = itemView.findViewById(R.id.imageButtonLIke);
             tv_like_cnt = itemView.findViewById(R.id.tv_like_cnt);
 
             tv_board_top = itemView.findViewById(R.id.tv_board_top);
             tv_board_shoes = itemView.findViewById(R.id.tv_board_shoes);
             tv_board_bottom = itemView.findViewById(R.id.tv_board_bottom);
             tv_board_acc = itemView.findViewById(R.id.tv_board_acc);
+
 
         }
 
@@ -91,6 +97,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_board_bottom.setText(items.getBottom());
             tv_board_acc.setText(items.getAcc());
 
+
+
+            btn_like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btn_like.setImageResource(R.drawable.like_change);
+                    int cnt = Integer.parseInt(items.getLike_cnt().toString());
+                    cnt++;
+                    tv_like_cnt.setText(""+cnt);
+
+                }
+            });
         }
     }
 }
