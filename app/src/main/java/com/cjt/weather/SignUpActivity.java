@@ -2,7 +2,9 @@ package com.cjt.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -119,6 +121,15 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast toast = null;
                 if (response.equals("join_success")) {
                     toast = Toast.makeText(getApplicationContext(), "회원가입 성공.", Toast.LENGTH_SHORT);
+
+                    SharedPreferences spf1 = getSharedPreferences("name", Context.MODE_PRIVATE);
+                    SharedPreferences spf2 = getSharedPreferences("birthdate", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spf1.edit();
+                    SharedPreferences.Editor editor1 = spf2.edit();
+                    editor.putString("name", edit_name.getText().toString());
+                    editor.putString("birthdate", edit_birthdate.getText().toString());
+                    editor.commit();
+
                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } else if (response.equals("join_fail")) {

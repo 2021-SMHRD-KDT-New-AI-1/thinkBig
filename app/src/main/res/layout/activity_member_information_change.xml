@@ -7,7 +7,7 @@
     tools:context=".Edit_Memberinfo">
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/tv_name1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -51,7 +51,7 @@
         android:text="이름"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_name1" />
 
     <TextView
         android:id="@+id/textView25"
@@ -64,17 +64,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/tv_name2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="사용자 이름에 따라 달라지는 부분"
         app:layout_constraintBottom_toBottomOf="@+id/textView24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView27"
+        app:layout_constraintStart_toStartOf="@+id/tv_birthdate"
         app:layout_constraintTop_toTopOf="@+id/textView24" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/tv_birthdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -114,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
 
     <TextView
         android:id="@+id/textView28"
@@ -123,11 +123,11 @@
         android:layout_marginStart="5dp"
         android:text="님의 회원정보  "
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView18"
-        app:layout_constraintStart_toEndOf="@+id/textView18" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name1"
+        app:layout_constraintStart_toEndOf="@+id/tv_name1" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/tv_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <Button
-        android:id="@+id/btn_edit6"
+        android:id="@+id/btn_et_phone"
         android:layout_width="63dp"
         android:layout_height="48dp"
         android:layout_marginEnd="20dp"
@@ -145,9 +145,9 @@
         android:text="편집"
         android:textColor="#3E3E3E"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView29"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView29" />
+        app:layout_constraintTop_toTopOf="@+id/tv_phone" />
 
     <TextView
         android:id="@+id/textView31"
@@ -163,7 +163,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_pw1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -178,7 +178,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/et_pw2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -189,21 +189,22 @@
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintStart_toStartOf="@+id/et_pw1"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw1" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_et_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="비밀번호 변경"
         android:textColor="#FF3E3E3E"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintEnd_toEndOf="@+id/et_pw2"
+        app:layout_constraintStart_toStartOf="@+id/et_pw2"
+        app:layout_constraintTop_toBottomOf="@+id/et_pw2" />
 
     <ImageButton
+        android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"

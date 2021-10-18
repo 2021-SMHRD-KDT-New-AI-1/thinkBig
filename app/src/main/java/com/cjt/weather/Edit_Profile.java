@@ -78,8 +78,8 @@ public class Edit_Profile extends AppCompatActivity {
                     intent.putExtra("nick", nick);
                     intent.putExtra("state_msg", state_msg);
                     intent.putExtra("pro_tag", pro_tag);
-
                     startActivity(intent);
+
                 } else if (response.equals("edit_pro_fail")) {
                     toast = Toast.makeText(getApplicationContext(), "프로필 설정 실패", Toast.LENGTH_SHORT);
                 }
