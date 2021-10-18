@@ -178,7 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="010-1234-5678"
+        android:hint="01012345678"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/btn_member_info_phone_change"
