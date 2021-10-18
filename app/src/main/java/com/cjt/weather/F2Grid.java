@@ -31,9 +31,9 @@ public class F2Grid extends Fragment {
         items.add(new BoardVO(R.drawable.image2, "내용이지!", "#태크", "5",
         "나이키", "켈빈클라인", "뉴발", "티파니"));
         items.add(new BoardVO(R.drawable.image3, "내용이지!", "#태크", "5",
-                "나이키", "켈빈클라인", "뉴발", "티파니"));
+                "아디다스", "뱅뱅", "나이키", "MLB모자"));
         items.add(new BoardVO(R.drawable.image4, "내용이지!", "#태크", "5",
-                "나이키", "켈빈클라인", "뉴발", "티파니"));
+                "셔츠", "검정슬랙스", "구두", "갤럭시워치"));
         items.add(new BoardVO(R.drawable.image5, "내용이지!", "#태크", "5",
                 "나이키", "켈빈클라인", "뉴발", "티파니"));
 

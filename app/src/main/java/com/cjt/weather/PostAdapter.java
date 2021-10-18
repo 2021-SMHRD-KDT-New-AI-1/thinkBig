@@ -87,8 +87,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_like_cnt.setText(items.getLike_cnt());
 
             tv_board_top.setText(items.getTop());
-            tv_board_shoes.setText(items.getBottom());
-            tv_board_bottom.setText(items.getShoes());
+            tv_board_shoes.setText(items.getShoes());
+            tv_board_bottom.setText(items.getBottom());
             tv_board_acc.setText(items.getAcc());
 
         }
