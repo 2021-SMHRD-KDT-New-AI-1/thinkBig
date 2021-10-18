@@ -54,7 +54,7 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.48861912" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -274,123 +274,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view18" />
 
-    <ImageView
-        android:id="@+id/img_main_weathericon"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/img_sub_background"
-        app:layout_constraintTop_toBottomOf="@+id/view18"
-        app:srcCompat="@drawable/clear" />
 
-    <TextView
-        android:id="@+id/tv_main_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:textColor="#4A4A4A"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_temp" />
-
-    <TextView
-        android:id="@+id/tv_main_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="20℃"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/img_main_weathericon"
-        app:layout_constraintTop_toTopOf="@+id/img_main_weathericon" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="15dp"
-        android:text="체감온도"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_temp"
-        app:layout_constraintTop_toBottomOf="@+id/view18" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
-        android:text="습도"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_sub_background"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="풍속"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/tv_post_sensetemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:text="21℃"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/tv_post_wind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3m/s"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/tv_post_sensetemp"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/tv_post_humid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20%"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="@+id/tv_post_wind"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.030349014" /><![CDATA[
-
-    "/>
-
-]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
