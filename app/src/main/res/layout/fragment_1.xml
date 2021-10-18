@@ -150,20 +150,22 @@
         android:background="#52FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/view20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/img_post_background"
-        app:layout_constraintTop_toTopOf="@+id/view11" />
+        app:layout_constraintTop_toTopOf="@+id/view11"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="27dp"
+        android:gravity="center"
         android:text="Clear"
         android:textColor="#4A4A4A"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_location"
         app:layout_constraintEnd_toEndOf="@+id/tv_temper"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tv_temper"
         app:layout_constraintTop_toBottomOf="@+id/tv_temper" />
 
@@ -171,9 +173,10 @@
         android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="광주"
+        android:text="Gwangju"
+        android:textAlignment="viewStart"
         android:textColor="#4A4A4A"
-        android:textSize="20sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view20"
         app:layout_constraintEnd_toEndOf="@+id/img_main_weathericon"
@@ -184,11 +187,11 @@
         android:id="@+id/tv_temper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="24dp"
         android:text="20℃"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/img_main_weathericon"
         app:layout_constraintTop_toTopOf="@+id/img_main_weathericon" />
 
@@ -231,10 +234,10 @@
 
     <ImageView
         android:id="@+id/img_main_weathericon"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view11"
         app:srcCompat="@drawable/clear" />
@@ -295,8 +298,7 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="120dp"
         android:text="체감온도"
         android:textColor="#4A4A4A"
         android:textSize="14sp"
@@ -345,7 +347,7 @@
         android:id="@+id/imageView5"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/bottom" />
@@ -380,6 +382,7 @@
         android:ems="10"
         android:hint="Top"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -394,6 +397,7 @@
         android:ems="10"
         android:hint="Shoes"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
         app:layout_constraintStart_toEndOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11" />
@@ -407,6 +411,7 @@
         android:ems="10"
         android:hint="Bottom"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toStartOf="@+id/imageView11"
         app:layout_constraintHorizontal_bias="0.0"
@@ -422,6 +427,7 @@
         android:ems="10"
         android:hint="Acc"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView12"
         app:layout_constraintStart_toEndOf="@+id/imageView12"
         app:layout_constraintTop_toTopOf="@+id/imageView12" />
