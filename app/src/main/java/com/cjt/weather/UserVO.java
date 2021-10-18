@@ -1,6 +1,6 @@
 package com.cjt.weather;
 
-public class UserVo {
+public class UserVO {
 
     String id;
     String pw;
@@ -14,7 +14,7 @@ public class UserVo {
     String state_msg;
     String pro_tag;
 
-    public UserVo(String id, String pw, String name, String phone, String gender, String birth_date, String nick, String state_msg, String pro_tag) {
+    public UserVO(String id, String pw, String name, String phone, String gender, String birth_date, String nick, String state_msg, String pro_tag) {
         this.id = id;
         this.pw = pw;
         this.name = name;

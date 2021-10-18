@@ -20,24 +20,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "MAIN";
     EditText et_id, et_pw;
     Button btn_login, btn_join;
     RequestQueue requestQueue;
+    private static final String TAG = "MAIN";
     SharedPreferences spf_user_info;
     SharedPreferences.Editor editor_user_info;
-    List<UserVo> user_info_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
         btn_join = findViewById(R.id.btn_join);
 
-        user_info_list = new ArrayList<UserVo>();
-
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
@@ -60,34 +54,39 @@ public class LoginActivity extends AppCompatActivity {
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                // 받을 때는 스트링이다! 이거를 제이슨 객체에 넣던지 하면 돼!
-                Log.d("로그인 응답 확인", response);
+                Log.d("로그인 response 확인", response);
+
+                // 제이슨 데이터 중에 결과값으로 들어옴.
+                String result = "";
+
                 try {
+                    JSONObject object = new JSONObject(response);
 
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONObject json_user_info = jsonObject.getJSONObject("jsonData");
-                    JSONArray users_info = json_user_info.getJSONArray("id");
+                    result = object.getString("result");
+                    String id = object.getString("id");
+                    String pw = object.getString("pw");
+                    String name = object.getString("name");
+                    String phone = object.getString("phone");
+                    String gender = object.getString("gender");
+                    String birth_date = object.getString("birth_date");
+                    //String pro_img_path = object.getString("pro_img_path");
+                    String nick = object.getString("nick");
+                    String state_msg = object.getString("state_msg");
+                    String pro_tag = object.getString("pro_tag");
 
-                    for (int i = 0; i < users_info.length(); i++) {
-                        JSONObject user_info = (JSONObject) users_info.get(i);
-                        // get을 쓰면, object를 리턴한다.
-                        // json object로 다운 캐스팅
-
-                        String id = user_info.getString("id");
-                        String pw = user_info.getString("pw");
-                        String name = user_info.getString("name");
-                        String phone = user_info.getString("phone");
-                        String gender = user_info.getString("gender");
-                        String birth_date = user_info.getString("birth_date");
-                        //String pro_img_path;
-                        String nick = user_info.getString("nick");
-                        String state_msg = user_info.getString("state_msg");
-                        String pro_tag = user_info.getString("pro_tag");
-                        Log.d("로그인 제이슨 확인", id);
-
-                        UserVo vo = new UserVo(id, pw, name, phone, gender, birth_date,nick,state_msg, pro_tag);
-                        user_info_list.add(vo);
-                    }
+                    // SharedPreferences 에 로그인한 사용자 정보 셋팅.
+                    spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                    editor_user_info = spf_user_info.edit();
+                    editor_user_info.putString("id", id);
+                    editor_user_info.putString("pw", pw);
+                    editor_user_info.putString("name", name);
+                    editor_user_info.putString("phone", phone);
+                    editor_user_info.putString("gender", gender);
+                    editor_user_info.putString("birth_date", birth_date);
+                    editor_user_info.putString("nick", nick);
+                    editor_user_info.putString("state_msg", state_msg);
+                    editor_user_info.putString("pro_tag", pro_tag);
+                    editor_user_info.commit();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -96,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 응답 종류
                 // 1. not_exit_id
                 // 2. not_correct_pw
-                // 3. login_success
+                // 3. login_success -> 제이슨으로 받아온다. "result":"success"
 
                 Toast toast = null;
 
@@ -106,13 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (response.equals("not_correct_pw")) {
                     toast = Toast.makeText(getApplicationContext(), "비밀번호를 확인해주세요.", Toast.LENGTH_SHORT);
 
-                } else if (response.equals("login_success")) {
+                    //} else if (response.equals("login_success")) {
+                } else if (result.equals("login_success")) {
                     toast = Toast.makeText(getApplicationContext(), "로그인 성공.", Toast.LENGTH_SHORT);
-
-                    spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
-                    editor_user_info = spf_user_info.edit();
-                    editor_user_info.putString("id", et_id.getText().toString());
-                    editor_user_info.commit();
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("from", "Login");
