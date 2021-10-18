@@ -7,18 +7,6 @@
     tools:context=".Edit_Memberinfo">
 
     <TextView
-        android:id="@+id/tv_name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="회원이름"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view14" />
-
-    <TextView
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,11 +35,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="이름"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name1" />
+        app:layout_constraintTop_toBottomOf="@+id/view14" />
 
     <TextView
         android:id="@+id/textView25"
@@ -64,17 +52,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
     <TextView
-        android:id="@+id/tv_name2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/tv_member_info_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
         android:text="사용자 이름에 따라 달라지는 부분"
         app:layout_constraintBottom_toBottomOf="@+id/textView24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_birthdate"
-        app:layout_constraintTop_toTopOf="@+id/textView24" />
+        app:layout_constraintStart_toEndOf="@+id/textView24"
+        app:layout_constraintTop_toTopOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_birthdate"
+        android:id="@+id/tv_member_info_birthdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -114,40 +103,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
-
-    <TextView
-        android:id="@+id/textView28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="님의 회원정보  "
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_name1"
-        app:layout_constraintStart_toEndOf="@+id/tv_name1" />
-
-    <TextView
-        android:id="@+id/tv_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="010-0000-0000 회원 휴대폰 번호"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/textView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_member_info_phone" />
 
     <Button
-        android:id="@+id/btn_et_phone"
+        android:id="@+id/btn_member_info_phone_change"
         android:layout_width="63dp"
         android:layout_height="48dp"
         android:layout_marginEnd="20dp"
         android:background="#00ff0000"
         android:text="편집"
         android:textColor="#3E3E3E"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_phone"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_member_info_phone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_phone" />
+        app:layout_constraintTop_toTopOf="@+id/edt_member_info_phone" />
 
     <TextView
         android:id="@+id/textView31"
@@ -163,7 +132,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_pw1"
+        android:id="@+id/edt_member_info_cur_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -178,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <EditText
-        android:id="@+id/et_pw2"
+        android:id="@+id/edt_member_info_new_pw"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -189,33 +158,31 @@
         android:minHeight="48dp"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/et_pw1"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw1" />
+        app:layout_constraintStart_toStartOf="@+id/edt_member_info_cur_pw"
+        app:layout_constraintTop_toBottomOf="@+id/edt_member_info_cur_pw" />
 
     <Button
-        android:id="@+id/btn_et_pw"
+        android:id="@+id/btn_member_info_pw_change"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="비밀번호 변경"
         android:textColor="#FF3E3E3E"
-        app:layout_constraintEnd_toEndOf="@+id/et_pw2"
-        app:layout_constraintStart_toStartOf="@+id/et_pw2"
-        app:layout_constraintTop_toBottomOf="@+id/et_pw2" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_member_info_new_pw"
+        app:layout_constraintStart_toStartOf="@+id/edt_member_info_new_pw"
+        app:layout_constraintTop_toBottomOf="@+id/edt_member_info_new_pw" />
 
-    <ImageButton
-        android:id="@+id/btn_send"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/edt_member_info_phone"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:background="#FFFFFF"
-        android:maxWidth="35dp"
-        android:maxHeight="35dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/check_mark"
-        app:layout_constraintBottom_toBottomOf="@+id/textView31"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView31" />
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="010-1234-5678"
+        android:inputType="textPersonName"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_member_info_phone_change"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

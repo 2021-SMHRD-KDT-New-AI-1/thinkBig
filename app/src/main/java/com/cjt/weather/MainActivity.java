@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
             bundle.putString("state_msg", state_msg);
             bundle.putString("pro_tag", pro_tag);
             f4SetUp.setArguments(bundle);
+        } else if (from.equals("Member_information_change")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, f4SetUp).commit();
         }
 
         nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
