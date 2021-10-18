@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
+
     <View
         android:id="@+id/view18"
         android:layout_width="match_parent"
@@ -54,8 +61,8 @@
         android:id="@+id/textView2"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_marginTop="15dp"
-        android:paddingLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="18dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:text="사용자 이름"
@@ -70,11 +77,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="좋아요 카운트 구현 부분"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toTopOf="@+id/imageButton4" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageButtonLIke"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonLIke"
+        app:layout_constraintTop_toTopOf="@+id/imageButtonLIke" />
 
 
     <TextView
@@ -82,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:paddingRight="20dp"
+        android:paddingRight="18dp"
         android:paddingBottom="5dp"
         android:text="상태메세지에 따라 달라지는 부분"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
@@ -94,12 +101,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.58" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/imageButtonLIke"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
@@ -113,9 +120,9 @@
 
     <ImageButton
         android:id="@+id/imageButton5"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:adjustViewBounds="true"
         android:background="#FFFFFF"
@@ -123,133 +130,112 @@
         android:maxHeight="35dp"
         android:scaleType="fitCenter"
         android:src="@drawable/comment"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
-        app:layout_constraintTop_toBottomOf="@+id/imgView" />
-
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:adjustViewBounds="true"
-        android:background="#FFFFFF"
-        android:maxWidth="35dp"
-        android:maxHeight="35dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/list_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgView" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:text="옷 정보"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="옷 정보"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:srcCompat="@drawable/top" />
 
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6"
-                app:srcCompat="@drawable/top" />
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7"
+            app:srcCompat="@drawable/bottom" />
 
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                app:layout_constraintStart_toStartOf="@+id/imageView7"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
-                app:srcCompat="@drawable/bottom" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="150dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:srcCompat="@drawable/shoes" />
 
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="150dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView7"
-                app:srcCompat="@drawable/shoes" />
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="150dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:srcCompat="@drawable/acc" />
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="150dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/imageView9"
-                app:layout_constraintTop_toTopOf="@+id/imageView8"
-                app:srcCompat="@drawable/acc" />
+        <TextView
+            android:id="@+id/tv_board_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Top"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
-            <TextView
-                android:id="@+id/tv_board_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:hint="Top"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        <TextView
+            android:id="@+id/tv_board_shoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Shoes"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+            app:layout_constraintStart_toEndOf="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
-            <TextView
-                android:id="@+id/tv_board_shoes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:hint="Shoes"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-                app:layout_constraintStart_toEndOf="@+id/imageView9"
-                app:layout_constraintTop_toTopOf="@+id/imageView9" />
+        <TextView
+            android:id="@+id/tv_board_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Bottom"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
-            <TextView
-                android:id="@+id/tv_board_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:hint="Bottom"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView8" />
-
-            <TextView
-                android:id="@+id/tv_board_acc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:hint="Acc"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toTopOf="@+id/imageView10" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/tv_board_acc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Acc"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toTopOf="@+id/imageView10" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/img_sub_background"
@@ -274,123 +260,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view18" />
 
-    <ImageView
-        android:id="@+id/img_main_weathericon"
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintStart_toStartOf="@+id/img_sub_background"
-        app:layout_constraintTop_toBottomOf="@+id/view18"
-        app:srcCompat="@drawable/clear" />
 
-    <TextView
-        android:id="@+id/tv_main_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear"
-        android:textColor="#4A4A4A"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_temp" />
-
-    <TextView
-        android:id="@+id/tv_main_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="20℃"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/img_main_weathericon"
-        app:layout_constraintTop_toTopOf="@+id/img_main_weathericon" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="15dp"
-        android:text="체감온도"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_temp"
-        app:layout_constraintTop_toBottomOf="@+id/view18" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
-        android:text="습도"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_sub_background"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="풍속"
-        android:textColor="#4A4A4A"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/tv_post_sensetemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:text="21℃"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/tv_post_wind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3m/s"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/tv_post_sensetemp"
-        app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/tv_post_humid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20%"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="@+id/tv_post_wind"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.030349014" /><![CDATA[
-
-    "/>
-
-]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
