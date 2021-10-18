@@ -20,17 +20,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "MAIN";
     EditText et_id, et_pw;
-    Button btn_login, btn_findid, btn_findpw, btn_join;
+    Button btn_login, btn_join;
     RequestQueue requestQueue;
     SharedPreferences spf_user_info;
     SharedPreferences.Editor editor_user_info;
+    List<UserVo> user_info_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         et_pw = findViewById(R.id.et_pw);
         btn_login = findViewById(R.id.btn_login);
         btn_join = findViewById(R.id.btn_join);
+
+        user_info_list = new ArrayList<UserVo>();
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -53,6 +62,36 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 // 받을 때는 스트링이다! 이거를 제이슨 객체에 넣던지 하면 돼!
                 Log.d("로그인 응답 확인", response);
+                try {
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONObject json_user_info = jsonObject.getJSONObject("jsonData");
+                    JSONArray users_info = json_user_info.getJSONArray("id");
+
+                    for (int i = 0; i < users_info.length(); i++) {
+                        JSONObject user_info = (JSONObject) users_info.get(i);
+                        // get을 쓰면, object를 리턴한다.
+                        // json object로 다운 캐스팅
+
+                        String id = user_info.getString("id");
+                        String pw = user_info.getString("pw");
+                        String name = user_info.getString("name");
+                        String phone = user_info.getString("phone");
+                        String gender = user_info.getString("gender");
+                        String birth_date = user_info.getString("birth_date");
+                        //String pro_img_path;
+                        String nick = user_info.getString("nick");
+                        String state_msg = user_info.getString("state_msg");
+                        String pro_tag = user_info.getString("pro_tag");
+                        Log.d("로그인 제이슨 확인", id);
+
+                        UserVo vo = new UserVo(id, pw, name, phone, gender, birth_date,nick,state_msg, pro_tag);
+                        user_info_list.add(vo);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 // 응답 종류
                 // 1. not_exit_id
@@ -117,8 +156,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     // 액티비티가 꺼지거나 사라졌을 때 큐삭제
