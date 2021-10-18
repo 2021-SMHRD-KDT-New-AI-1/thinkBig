@@ -1,5 +1,6 @@
 package com.cjt.weather;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
 
@@ -67,6 +66,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         TextView tv_board_shoes;
         TextView tv_board_bottom;
         TextView tv_board_acc;
+        TextView tv_main_temp;
+        String temp, humid, sense_temper, weather, wind;
 
 
         PostViewHolder(@NonNull View itemView) {
@@ -81,6 +82,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_board_shoes = itemView.findViewById(R.id.tv_board_shoes);
             tv_board_bottom = itemView.findViewById(R.id.tv_board_bottom);
             tv_board_acc = itemView.findViewById(R.id.tv_board_acc);
+            tv_main_temp = itemView.findViewById(R.id.tv_main_temp);
 
 
         }
@@ -97,6 +99,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_board_bottom.setText(items.getBottom());
             tv_board_acc.setText(items.getAcc());
 
+            Weather Weather = new Weather();
+            temp = Weather.temper;
+            humid = Weather.humid;
+            weather = Weather.weather;
+            sense_temper = Weather.sense_temper;
+            wind = Weather.wind;
 
 
             btn_like.setOnClickListener(new View.OnClickListener() {
