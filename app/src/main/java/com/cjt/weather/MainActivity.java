@@ -58,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.menu2) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new F2Grid()).commit();
 
-                } else if (item.getItemId() == R.id.menu3) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new F3List()).commit();
-
                 } else if (item.getItemId() == R.id.menu4)
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, f4SetUp).commit();
 
