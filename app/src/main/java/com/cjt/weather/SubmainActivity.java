@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class SubmainActivity extends AppCompatActivity {
 
-    Button imageButtonLIke;
+    ImageButton imageButtonLIke;
+    TextView tv_like_cnt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,17 +19,6 @@ public class SubmainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_submain);
 
 
-        imageButtonLIke.findViewById(R.id.imageButtonLIke);
-        imageButtonLIke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-
-
-            }
-        });
 
 
     }

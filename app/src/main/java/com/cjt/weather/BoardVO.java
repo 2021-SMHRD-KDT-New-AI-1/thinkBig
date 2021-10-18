@@ -1,5 +1,6 @@
 package com.cjt.weather;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class BoardVO {
@@ -22,6 +23,9 @@ public class BoardVO {
     private String bottom;
     private String shoes;
     private String acc;
+
+    // 좋아요 버튼
+    ImageButton btn_like;
 
     public BoardVO(int img, String content, String board_tag, String like_cnt, String top, String bottom, String shoes, String acc) {
         this.img = img;
