@@ -68,7 +68,7 @@ public class Edit_Profile extends AppCompatActivity {
         edt_pro_hashtag = findViewById(R.id.edt_pr_hashtag);
         btn_pro_img = findViewById(R.id.btn_pr_img);
 
-        spf = getSharedPreferences("id", Context.MODE_PRIVATE);
+        spf = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         id = spf.getString("id", "default_id");
         // spf.getString("id", 만약 사용할 데이터가 없을 때 디폴트 값 넣어주기);
 

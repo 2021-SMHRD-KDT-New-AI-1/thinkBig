@@ -1,6 +1,5 @@
 package com.cjt.weather;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,9 +65,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_board_content = itemView.findViewById(R.id.tv_board_content);
             
             tv_board_top = itemView.findViewById(R.id.tv_board_top);
-            tv_board_shoes = itemView.findViewById(R.id.tv_board_shoes);
+            tv_board_shoes = itemView.findViewById(R.id.tv_profile_nick);
             tv_board_bottom = itemView.findViewById(R.id.tv_board_bottom);
-            tv_board_acc = itemView.findViewById(R.id.tv_board_acc);
+            tv_board_acc = itemView.findViewById(R.id.tv_profile_state_msg);
         }
 
         void setPosImageView(BoardVO items) {

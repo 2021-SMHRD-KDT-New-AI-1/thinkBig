@@ -102,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_content" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_post_content" />
 
     <View
         android:id="@+id/view3"
@@ -115,7 +115,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_hashtag" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_post_board_tag" />
 
 
     <ImageView
@@ -156,7 +156,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_weather"
+        android:id="@+id/tv_post_weather"
         android:layout_width="50dp"
         android:layout_height="27dp"
         android:gravity="center"
@@ -164,10 +164,10 @@
         android:textColor="#4A4A4A"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_temper"
+        app:layout_constraintEnd_toEndOf="@+id/tv_post_temper"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tv_temper"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temper" />
+        app:layout_constraintStart_toStartOf="@+id/tv_post_temper"
+        app:layout_constraintTop_toBottomOf="@+id/tv_post_temper" />
 
     <TextView
         android:id="@+id/tv_location"
@@ -184,7 +184,7 @@
         app:layout_constraintTop_toBottomOf="@+id/img_grid_weatherIcon" />
 
     <TextView
-        android:id="@+id/tv_temper"
+        android:id="@+id/tv_post_temper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -196,7 +196,7 @@
         app:layout_constraintTop_toTopOf="@+id/img_grid_weatherIcon" />
 
     <TextView
-        android:id="@+id/tv_wind"
+        android:id="@+id/tv_post_wind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3m/s"
@@ -204,11 +204,11 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        app:layout_constraintStart_toStartOf="@+id/tv_sense_temper"
+        app:layout_constraintStart_toStartOf="@+id/tv_post_sense_temper"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/tv_sense_temper"
+        android:id="@+id/tv_post_sense_temper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
@@ -221,7 +221,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/tv_humid"
+        android:id="@+id/tv_post_humid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="20%"
@@ -229,7 +229,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintStart_toStartOf="@+id/tv_wind"
+        app:layout_constraintStart_toStartOf="@+id/tv_post_wind"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
     <ImageView
@@ -239,11 +239,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view11"
-        app:srcCompat="@drawable/clear" />
+        app:layout_constraintTop_toBottomOf="@+id/view11" />
 
     <ImageView
-        android:id="@+id/img_pic"
+        android:id="@+id/img_select"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginEnd="30dp"
@@ -253,7 +252,7 @@
         app:srcCompat="@drawable/pic" />
 
     <EditText
-        android:id="@+id/edt_content"
+        android:id="@+id/edt_post_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -269,7 +268,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_pr_main" />
 
     <EditText
-        android:id="@+id/edt_hashtag"
+        android:id="@+id/edt_post_board_tag"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -303,8 +302,8 @@
         android:textColor="#4A4A4A"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_temper"
-        app:layout_constraintTop_toTopOf="@+id/tv_temper" />
+        app:layout_constraintStart_toEndOf="@+id/tv_post_temper"
+        app:layout_constraintTop_toTopOf="@+id/tv_post_temper" />
 
     <TextView
         android:id="@+id/textView13"
@@ -374,7 +373,7 @@
         app:srcCompat="@drawable/acc" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/edt_post_top"
         android:layout_width="60dp"
         android:layout_height="26dp"
         android:layout_marginStart="10dp"
@@ -389,7 +388,7 @@
         app:layout_constraintVertical_bias="0.562" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/edt_post_shoes"
         android:layout_width="52dp"
         android:layout_height="26dp"
         android:layout_marginStart="10dp"
@@ -403,7 +402,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/edt_post_bottom"
         android:layout_width="70dp"
         android:layout_height="21dp"
         android:layout_marginStart="10dp"
@@ -419,7 +418,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/edt_post_acc"
         android:layout_width="70dp"
         android:layout_height="21dp"
         android:layout_marginStart="10dp"
