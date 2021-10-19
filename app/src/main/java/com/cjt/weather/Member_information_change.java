@@ -70,7 +70,7 @@ public class Member_information_change<spf> extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
-        String url = "http://172.30.1.28:3002/edit_user";
+        String url = "http://172.30.1.29:3002/edit_user";
 
         // 폰번호 갱신 코드
         final StringRequest stringRequest_change_phone = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
