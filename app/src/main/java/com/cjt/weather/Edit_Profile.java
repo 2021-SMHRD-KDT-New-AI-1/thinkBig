@@ -1,16 +1,26 @@
 package com.cjt.weather;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -29,12 +40,16 @@ import java.util.Map;
 
 public class Edit_Profile extends AppCompatActivity {
 
+    int REQUEST_IMAGE_CODE = 1003;
+    int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1004;
+
     private static final String TAG = "MAIN";
     ImageButton btn_pr_edit;
     EditText ed_pro_nick, edt_pro_msg, edt_pro_hashtag;
     Button btn_pro_img;
     RequestQueue requestQueue;
     SharedPreferences spf;
+    ImageView pro_img;
 
     String id = "";
     String nick = "";
@@ -46,6 +61,7 @@ public class Edit_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        pro_img = findViewById(R.id.pro_img);
         btn_pr_edit = findViewById(R.id.btn_pr_edit);
         ed_pro_nick = findViewById(R.id.ed_pr_nick);
         edt_pro_msg = findViewById(R.id.edt_pr_msg);
@@ -122,6 +138,30 @@ public class Edit_Profile extends AppCompatActivity {
                 requestQueue.add(stringRequest_edit_profile);
             }
         });
+
+        //앨범 접근 권한 설정 코드
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_EXTERNAL_STORAGE_PERMISSION);
+            }
+        } else {
+        }
+
+        // 프로필 사진 변경을 눌렀을 떄 코드
+        btn_pro_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(in, REQUEST_IMAGE_CODE);
+            }
+        });
+
     }
 
     @Override
@@ -131,4 +171,25 @@ public class Edit_Profile extends AppCompatActivity {
             requestQueue.cancelAll(TAG);
         }
     }
-}
+
+    // 사진 접근한 결과를 나타내는 코드
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_IMAGE_CODE){
+            Uri image = data.getData();
+            try {
+                Bitmap bitmap  = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image);
+                pro_img.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    }
