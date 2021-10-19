@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 응답 종류
                 // 1. not_exit_id
                 // 2. not_correct_pw
-                // 3. login_success -> 제이슨으로 받아온다. "result":"success"
+                // 3. login_success -> 제이슨으로 받아온다. "result":"login_success"
 
                 Toast toast = null;
 

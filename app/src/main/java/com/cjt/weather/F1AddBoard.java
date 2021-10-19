@@ -67,7 +67,7 @@ public class F1AddBoard extends Fragment {
         });
 
         // 변하는 날씨 정보 가져오는 코드
-        img_weathericon = view.findViewById(R.id.img_main_weathericon);
+        img_weathericon = view.findViewById(R.id.img_grid_weatherIcon);
         tv_humid = view.findViewById(R.id.tv_humid);
         tv_sense_temper = view.findViewById(R.id.textview12);
         tv_temper = view.findViewById(R.id.tv_temper);

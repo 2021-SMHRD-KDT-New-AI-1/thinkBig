@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_main_weather"
+        android:id="@+id/tv_grid_weather"
         android:layout_width="47dp"
         android:layout_height="21dp"
         android:gravity="center"
@@ -54,8 +54,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_main_location"
-        app:layout_constraintEnd_toEndOf="@+id/tv_main_temp"
-        app:layout_constraintStart_toStartOf="@+id/tv_main_temp" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_grid_temp"
+        app:layout_constraintStart_toStartOf="@+id/tv_grid_temp" />
 
     <TextView
         android:id="@+id/tv_main_location"
@@ -66,9 +66,9 @@
         android:textColor="#4A4A4A"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/img_main_weathericon"
-        app:layout_constraintStart_toStartOf="@+id/img_main_weathericon"
-        app:layout_constraintTop_toBottomOf="@+id/img_main_weathericon" />
+        app:layout_constraintEnd_toEndOf="@+id/img_grid_weatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/img_grid_weatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/img_grid_weatherIcon" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -88,7 +88,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <TextView
-        android:id="@+id/tv_main_temp"
+        android:id="@+id/tv_grid_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -96,11 +96,11 @@
         android:text="20℃"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/img_main_weathericon"
-        app:layout_constraintTop_toTopOf="@+id/img_main_weathericon" />
+        app:layout_constraintStart_toEndOf="@+id/img_grid_weatherIcon"
+        app:layout_constraintTop_toTopOf="@+id/img_grid_weatherIcon" />
 
     <ImageView
-        android:id="@+id/img_main_weathericon"
+        android:id="@+id/img_grid_weatherIcon"
         android:layout_width="50dp"
         android:layout_height="45dp"
         android:layout_marginStart="20dp"
@@ -118,8 +118,8 @@
         android:textColor="#4A4A4A"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_temp"
-        app:layout_constraintTop_toTopOf="@+id/tv_main_temp" />
+        app:layout_constraintStart_toEndOf="@+id/tv_grid_temp"
+        app:layout_constraintTop_toTopOf="@+id/tv_grid_temp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -130,9 +130,9 @@
         android:textColor="#4A4A4A"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_post_wind"
-        app:layout_constraintStart_toEndOf="@+id/tv_post_wind"
-        app:layout_constraintTop_toTopOf="@+id/tv_post_wind" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_grid_wind"
+        app:layout_constraintStart_toEndOf="@+id/tv_grid_wind"
+        app:layout_constraintTop_toTopOf="@+id/tv_grid_wind" />
 
     <TextView
         android:id="@+id/textView14"
@@ -143,13 +143,13 @@
         android:textColor="#4A4A4A"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_post_sensetemp"
-        app:layout_constraintStart_toEndOf="@+id/tv_post_sensetemp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_grid_senseTemp"
+        app:layout_constraintStart_toEndOf="@+id/tv_grid_senseTemp"
         app:layout_constraintTop_toTopOf="@+id/img_main_background"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/tv_post_sensetemp"
+        android:id="@+id/tv_grid_senseTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -163,7 +163,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_post_wind"
+        android:id="@+id/tv_grid_wind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -177,7 +177,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_post_humid"
+        android:id="@+id/tv_grid_humid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
