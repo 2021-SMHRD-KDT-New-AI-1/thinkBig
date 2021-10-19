@@ -54,11 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("로그인 response 확인", response);
-
-                // 제이슨 데이터 중에 결과값으로 들어옴.
                 String result = "";
-
                 try {
                     JSONObject object = new JSONObject(response);
 

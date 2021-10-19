@@ -24,14 +24,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imgView"
+        android:id="@+id/img_board_img_path"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_board_nick"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <View
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_board_content" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_board_nick"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -72,29 +72,29 @@
         app:layout_constraintTop_toBottomOf="@+id/img_sub_background" />
 
     <TextView
-        android:id="@+id/tv_like_cnt"
+        android:id="@+id/tv_board_like_cnt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="좋아요 카운트"
+        android:text="좋아요"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonLIke"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonLIke"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonLIke" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtn_board_like"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn_board_like"
+        app:layout_constraintTop_toTopOf="@+id/imgBtn_board_like" />
 
 
     <TextView
-        android:id="@+id/tv_content"
+        android:id="@+id/tv_board_state_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         android:paddingRight="18dp"
         android:paddingBottom="5dp"
         android:text="상태메세지에 따라 달라지는 부분"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_board_nick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/tv_board_nick" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -104,7 +104,7 @@
         app:layout_constraintGuide_percent="0.58" />
 
     <ImageButton
-        android:id="@+id/imageButtonLIke"
+        android:id="@+id/imgBtn_board_like"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="20dp"
@@ -131,7 +131,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/comment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+        app:layout_constraintTop_toBottomOf="@+id/img_board_img_path" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -210,7 +210,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
         <TextView
-            android:id="@+id/tv_profile_nick"
+            android:id="@+id/tv_board_shoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -230,7 +230,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
         <TextView
-            android:id="@+id/tv_profile_state_msg"
+            android:id="@+id/tv_board_acc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -271,10 +271,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:padding="5dp"
-        android:text="글 쓰면 달라지는 부분"
+        android:text="content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_like_cnt" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_board_like_cnt" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

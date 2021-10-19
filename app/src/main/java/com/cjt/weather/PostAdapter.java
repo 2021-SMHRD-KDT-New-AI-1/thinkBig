@@ -39,18 +39,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     class PostViewHolder extends RecyclerView.ViewHolder {
 
-        /* // 얘들 선언해주기
-               content; // xml에 없음
-               board_tag; // xml에 없음
-         */
+        // 뷰 선언언
+        ImageView img_board_img_path;
+        ImageButton imgBtn_board_like;
 
-        // 뷰 선언
-        ImageView imgView;
-
-        ImageButton btn_like;
-        TextView tv_like_cnt;
+        TextView tv_board_nick;
+        TextView tv_board_state_msg;
+        TextView tv_board_like_cnt;
         TextView tv_board_content;
-        
+
         TextView tv_board_top;
         TextView tv_board_shoes;
         TextView tv_board_bottom;
@@ -59,35 +56,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         PostViewHolder(@NonNull View itemView) {
             super(itemView);
             // 뷰 초기화
-            imgView = itemView.findViewById(R.id.imgView);
-            btn_like = itemView.findViewById(R.id.imageButtonLIke);
-            tv_like_cnt = itemView.findViewById(R.id.tv_like_cnt);
+            img_board_img_path = itemView.findViewById(R.id.img_board_img_path);
+            imgBtn_board_like = itemView.findViewById(R.id.imgBtn_board_like);
+
+            tv_board_nick = itemView.findViewById(R.id.tv_board_nick);
+            tv_board_state_msg = itemView.findViewById(R.id.tv_board_state_msg);
+            tv_board_like_cnt = itemView.findViewById(R.id.tv_board_like_cnt);
             tv_board_content = itemView.findViewById(R.id.tv_board_content);
-            
+
             tv_board_top = itemView.findViewById(R.id.tv_board_top);
-            tv_board_shoes = itemView.findViewById(R.id.tv_profile_nick);
+            tv_board_shoes = itemView.findViewById(R.id.tv_board_shoes);
             tv_board_bottom = itemView.findViewById(R.id.tv_board_bottom);
-            tv_board_acc = itemView.findViewById(R.id.tv_profile_state_msg);
+            tv_board_acc = itemView.findViewById(R.id.tv_board_acc);
         }
 
         void setPosImageView(BoardVO items) {
+
             // 각 아이템들 셋팅
-            imgView.setImageResource(items.getImg());
-            tv_like_cnt.setText(items.getLike_cnt());
-            // tv_board_content.setText(items.get);
+            tv_board_nick.setText(items.getNick());
+            tv_board_state_msg.setText(items.getState_msg());
+
+            img_board_img_path.setImageResource(items.getImg()); // 나중에 여기 잘 보기!
+            tv_board_like_cnt.setText(items.getLike_cnt());
+            tv_board_content.setText(items.getContent());
 
             tv_board_top.setText(items.getTop());
             tv_board_shoes.setText(items.getShoes());
             tv_board_bottom.setText(items.getBottom());
             tv_board_acc.setText(items.getAcc());
 
-            btn_like.setOnClickListener(new View.OnClickListener() {
+            tv_board_like_cnt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    btn_like.setImageResource(R.drawable.like_change);
+                    imgBtn_board_like.setImageResource(R.drawable.like_change);
                     int cnt = Integer.parseInt(items.getLike_cnt().toString());
                     cnt++;
-                    tv_like_cnt.setText("" + cnt);
+                    tv_board_like_cnt.setText("" + cnt);
 
                 }
             });

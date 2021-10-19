@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
-        android:id="@+id/tv_profile_state_msg"
+        android:id="@+id/tv_board_acc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -57,7 +57,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_profile_nick"
+        android:id="@+id/tv_board_shoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -100,7 +100,7 @@
         android:layout_marginEnd="119dp"
         android:text="닉네임"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_profile_nick"
+        app:layout_constraintEnd_toStartOf="@+id/tv_board_shoes"
         app:layout_constraintStart_toEndOf="@+id/img_profile_pro_img_path"
         app:layout_constraintTop_toBottomOf="@+id/view17" />
 
@@ -124,7 +124,7 @@
         android:layout_marginEnd="64dp"
         android:text="상태메세지"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_profile_state_msg"
+        app:layout_constraintEnd_toStartOf="@+id/tv_board_acc"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
