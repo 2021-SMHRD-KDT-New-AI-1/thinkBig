@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +18,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +40,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +54,7 @@ public class F1AddBoard extends Fragment {
     ImageView img_post, img_select, img_grid_weathericon;
     EditText edt_post_content, edt_post_board_tag, edt_post_top, edt_post_bottom, edt_post_shoes, edt_post_acc;
     TextView tv_post_weather, tv_post_temper, tv_post_sense_temper, tv_post_wind, tv_post_humid;
+    Bitmap bmp_img;
 
     RequestQueue rq;
     private static final String TAG = "MAIN";
@@ -63,20 +68,6 @@ public class F1AddBoard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        //앨범 접근 권한 설정 코드
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_EXTERNAL_STORAGE_PERMISSION);
-            }
-        }
-
         // 뷰 초기화
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 
@@ -99,6 +90,19 @@ public class F1AddBoard extends Fragment {
         // 액티비티가 아니라서 Context가 없는 프래그먼트에는 사욯할 수 없다.
         spf = this.getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
         id = spf.getString("id", "default_id");
+
+        //앨범 접근 권한 설정 코드
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        REQUEST_EXTERNAL_STORAGE_PERMISSION);
+            }
+        }
 
         if (rq == null) {
             rq = Volley.newRequestQueue(getActivity());
@@ -144,16 +148,6 @@ public class F1AddBoard extends Fragment {
         sr.setTag(TAG);
         rq.add(sr);
 
-
-        // 앨범 접근 코드
-        img_select.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(in, REQUEST_IMAGE_CODE);
-            }
-        });
-
         String url_post = "http://172.30.1.29:3002/board";
 
         final StringRequest stringRequest_posting = new StringRequest(Request.Method.POST, url_post, new Response.Listener<String>() {
@@ -186,6 +180,8 @@ public class F1AddBoard extends Fragment {
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("id", id);
+                params.put("post_img", BitmapToString(bmp_img));
+                Log.d("send_img", BitmapToString(bmp_img));
                 params.put("weather", weather);
                 params.put("temper", temper);
                 params.put("sense_temper", sense_temper);
@@ -203,6 +199,16 @@ public class F1AddBoard extends Fragment {
             }
         };
         stringRequest_posting.setTag(TAG);
+
+        // 앨범 접근 코드
+        img_select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(in, REQUEST_IMAGE_CODE);
+
+            }
+        });
 
         // 게시물 게시 버튼
         img_post.setOnClickListener(new View.OnClickListener() {
@@ -222,7 +228,7 @@ public class F1AddBoard extends Fragment {
         return view;
     }
 
-    //접근한 결과를 나타내는 코드
+    // 앨범 선택 후 사진 셋팅
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -231,6 +237,14 @@ public class F1AddBoard extends Fragment {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), image);
                 img_select.setImageBitmap(bitmap);
+
+                // res/drawable 에 있는 이미지를 bitmap으로 가져오기
+                bmp_img = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.image2);
+
+                // bmp_img 에 앨범에서 선택한 이미지 넣기.
+                //BitmapDrawable drawable = (BitmapDrawable) img_select.getDrawable();
+                //bmp_img = drawable.getBitmap();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -249,6 +263,33 @@ public class F1AddBoard extends Fragment {
             rq.cancelAll(TAG);
         }
     }
+
+
+
+    // bmp -> String
+    public static String BitmapToString(Bitmap bitmap) {
+        if (bitmap == null) {
+            return "디폴트 이미지";
+        }
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 90, baos);
+        byte[] bytes = baos.toByteArray();
+        String bitString = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return bitString;
+    }
+
+    // String -> bmp
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
+
 
 }
 
