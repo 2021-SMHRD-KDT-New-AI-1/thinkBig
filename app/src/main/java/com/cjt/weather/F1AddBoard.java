@@ -51,7 +51,7 @@ public class F1AddBoard extends Fragment {
     int REQUEST_IMAGE_CODE = 1001;
     int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1002;
 
-    ImageView img_post, img_select, img_grid_weathericon;
+    ImageView img_post_background, img_post_weatherIcon, img_post, img_select;
     EditText edt_post_content, edt_post_board_tag, edt_post_top, edt_post_bottom, edt_post_shoes, edt_post_acc;
     TextView tv_post_weather, tv_post_temper, tv_post_sense_temper, tv_post_wind, tv_post_humid;
     Bitmap bmp_img;
@@ -63,7 +63,7 @@ public class F1AddBoard extends Fragment {
 
     String id = "";
     String weather, temper, sense_temper, humid, wind;
-    String content="", board_tag="", top="", bottom="", shoes="", acc="";
+    String content = "", board_tag = "", top = "", bottom = "", shoes = "", acc = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +71,8 @@ public class F1AddBoard extends Fragment {
         // 뷰 초기화
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 
+        img_post_background = view.findViewById(R.id.img_post_background);
+        img_post_weatherIcon = view.findViewById(R.id.img_grid_weatherIcon);
         img_post = view.findViewById(R.id.img_post);
         img_select = view.findViewById(R.id.img_select);
 
@@ -108,12 +110,13 @@ public class F1AddBoard extends Fragment {
             rq = Volley.newRequestQueue(getActivity());
         }
 
+        // 날씨 가져오는 연결.
         String url_weather = "https://api.openweathermap.org/data/2.5/weather?q=gwangju&appid=3c8a165efd4b9e13dc4f58b4b1056c34&lang=kr&units=metric";
 
         final StringRequest sr = new StringRequest(Request.Method.GET, url_weather, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("날씨 response 확인", response);
+                //Log.d("날씨 response 확인", response);
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
@@ -134,6 +137,24 @@ public class F1AddBoard extends Fragment {
                     tv_post_humid.setText(humid);
                     tv_post_wind.setText(wind);
 
+                    if (weather.equals("clear")) {
+                        img_post_weatherIcon.setImageResource(R.drawable.clear);
+                        img_post_background.setImageResource(R.drawable.clearbackground);
+                    } else if (weather.equals("clouds")) {
+                        img_post_weatherIcon.setImageResource(R.drawable.clouds);
+                        img_post_background.setImageResource(R.drawable.rainbackground);
+                    } else if (weather.equals("atmosphere")) {
+                        img_post_weatherIcon.setImageResource(R.drawable.atmosphere);
+                    } else if (weather.equals("rain")) {
+                        img_post_weatherIcon.setImageResource(R.drawable.rain);
+                        img_post_background.setImageResource(R.drawable.rainbackground);
+                    } else if (weather.equals("thunderstorm")) {
+                        img_post_weatherIcon.setImageResource(R.drawable.thunderstorm);
+                    } else if (weather.equals("drizzle")) {
+                        // drizzle:보슬비
+                        img_post_weatherIcon.setImageResource(R.drawable.drizzle);
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -153,7 +174,7 @@ public class F1AddBoard extends Fragment {
         final StringRequest stringRequest_posting = new StringRequest(Request.Method.POST, url_post, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("Post response 확인", response);
+                //Log.d("Post response 확인", response);
 
                 Toast toast = null;
                 if (response.equals("board_fail")) {
@@ -235,15 +256,16 @@ public class F1AddBoard extends Fragment {
         if (requestCode == REQUEST_IMAGE_CODE) {
             Uri image = data.getData();
             try {
+                // 앨범에서 가져온 사진으로 이미지뷰셋팅.(지윤이 코드)
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), image);
                 img_select.setImageBitmap(bitmap);
 
                 // res/drawable 에 있는 이미지를 bitmap으로 가져오기
-                bmp_img = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.image2);
+                //bmp_img = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.image2);
 
                 // bmp_img 에 앨범에서 선택한 이미지 넣기.
-                //BitmapDrawable drawable = (BitmapDrawable) img_select.getDrawable();
-                //bmp_img = drawable.getBitmap();
+                BitmapDrawable drawable = (BitmapDrawable) img_select.getDrawable();
+                bmp_img = drawable.getBitmap();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -265,11 +287,10 @@ public class F1AddBoard extends Fragment {
     }
 
 
-
     // bmp -> String
     public static String BitmapToString(Bitmap bitmap) {
         if (bitmap == null) {
-            return "디폴트 이미지";
+            return "default image";
         }
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 90, baos);

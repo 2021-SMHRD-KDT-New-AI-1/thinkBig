@@ -3,14 +3,12 @@ package com.cjt.weather;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,11 +26,11 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Member_information_change<spf> extends AppCompatActivity {
+public class UserInfoChangeActivity<spf> extends AppCompatActivity {
 
-    TextView tv_member_info_name, tv_member_info_birthdate;
-    EditText edt_member_info_phone, edt_member_info_cur_pw, edt_member_info_new_pw;
-    Button btn_member_info_phone_change, btn_member_info_pw_change;
+    TextView tv_user_info_name, tv_user_info_birthdate;
+    EditText edt_user_info_phone, edt_user_info_cur_pw, edt_user_info_new_pw;
+    Button btn_user_info_phone_change, btn_user_info_pw_change;
     RequestQueue requestQueue;
     SharedPreferences spf_user_info;
     SharedPreferences.Editor editor_user_info;
@@ -52,23 +50,29 @@ public class Member_information_change<spf> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_information_change);
 
-        tv_member_info_name = findViewById(R.id.tv_member_info_name);
-        tv_member_info_birthdate = findViewById(R.id.tv_member_info_birthdate);
-        edt_member_info_phone = findViewById(R.id.edt_member_info_phone);
-        edt_member_info_cur_pw = findViewById(R.id.edt_member_info_cur_pw);
-        edt_member_info_new_pw = findViewById(R.id.edt_member_info_new_pw);
-        btn_member_info_phone_change = findViewById(R.id.btn_member_info_phone_change);
-        btn_member_info_pw_change = findViewById(R.id.btn_member_info_pw_change);
+        tv_user_info_name = findViewById(R.id.tv_user_info_name);
+        tv_user_info_birthdate = findViewById(R.id.tv_user_info_birthdate);
+        edt_user_info_phone = findViewById(R.id.edt_user_info_phone);
+        edt_user_info_cur_pw = findViewById(R.id.edt_user_info_cur_pw);
+        edt_user_info_new_pw = findViewById(R.id.edt_user_info_new_pw);
+        btn_user_info_phone_change = findViewById(R.id.btn_user_info_phone_change);
+        btn_user_info_pw_change = findViewById(R.id.btn_user_info_pw_change);
 
         spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
         editor_user_info = spf_user_info.edit();
         id = spf_user_info.getString("id", "default_id");
-        //name = spf_user_info.getString("name", "default_name");
-        //birthdate = spf_user_info.getString("birthdate", "default_birthdate");
+        name = spf_user_info.getString("name", "default_name");
+        birthdate = spf_user_info.getString("birthdate", "default_birthdate");
+        phone = spf_user_info.getString("phone", "default_phone");
+
+        tv_user_info_name.setText(name);
+        tv_user_info_birthdate.setText(birthdate);
+        edt_user_info_phone.setText(phone);
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
+
 
         String url = "http://172.30.1.29:3002/edit_user";
 
@@ -156,10 +160,10 @@ public class Member_information_change<spf> extends AppCompatActivity {
         stringRequest_change_pw.setTag(TAG);
 
         // 버튼:핸드폰 번호 변경하기
-        btn_member_info_phone_change.setOnClickListener(new View.OnClickListener() {
+        btn_user_info_phone_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                phone = edt_member_info_phone.getText().toString();
+                phone = edt_user_info_phone.getText().toString();
                 if (phone.length() != 11) {
                     Toast.makeText(getApplicationContext(), "번호를 정확히 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
@@ -169,12 +173,17 @@ public class Member_information_change<spf> extends AppCompatActivity {
         });
 
         // 버튼:비밀번호 변경하기
-        btn_member_info_pw_change.setOnClickListener(new View.OnClickListener() {
+        btn_user_info_pw_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cur_pw = edt_member_info_cur_pw.getText().toString();
-                new_pw = edt_member_info_new_pw.getText().toString();
-                requestQueue.add(stringRequest_change_pw);
+                cur_pw = edt_user_info_cur_pw.getText().toString();
+                new_pw = edt_user_info_new_pw.getText().toString();
+
+                if (cur_pw.equals(new_pw)) {
+                    Toast.makeText(getApplicationContext(), "현재와 다른 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    requestQueue.add(stringRequest_change_pw);
+                }
             }
         });
     }

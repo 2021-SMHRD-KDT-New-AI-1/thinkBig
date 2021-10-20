@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Edit_Profile">
+    tools:context=".EditProfileActivity">
 
     <TextView
         android:id="@+id/textView32"
@@ -143,7 +143,7 @@
             android:background="@null"
             android:ems="10"
             android:gravity="left"
-            android:hint=" #흐림    #맑음"
+            android:hint="#스트릿 #캐주얼"
             android:inputType="textPersonName"
             android:padding="5dp"
             android:textColor="#2B2B2B"

@@ -28,6 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // 뷰 선언
     EditText et_id, et_pw;
     Button btn_login, btn_join;
     RequestQueue requestQueue;
@@ -40,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // 뷰 초기화
         et_id = findViewById(R.id.et_id);
         et_pw = findViewById(R.id.et_pw);
         btn_login = findViewById(R.id.btn_login);
@@ -55,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 String result = "";
+
+                // 로그인 성공 했을 때 사용자 정보를 가져와서 SharedPreferences 에 저장.
                 try {
                     JSONObject object = new JSONObject(response);
 
@@ -64,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                     String name = object.getString("name");
                     String phone = object.getString("phone");
                     String gender = object.getString("gender");
-                    String birth_date = object.getString("birth_date");
+                    String birthdate = object.getString("birthdate");
                     //String pro_img_path = object.getString("pro_img_path");
                     String nick = object.getString("nick");
                     String state_msg = object.getString("state_msg");
@@ -78,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor_user_info.putString("name", name);
                     editor_user_info.putString("phone", phone);
                     editor_user_info.putString("gender", gender);
-                    editor_user_info.putString("birth_date", birth_date);
+                    editor_user_info.putString("birthdate", birthdate);
                     editor_user_info.putString("nick", nick);
                     editor_user_info.putString("state_msg", state_msg);
                     editor_user_info.putString("pro_tag", pro_tag);
@@ -108,6 +112,8 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("from", "Login");
                     startActivity(intent);
+                    // 로그인 성공했을 경우 메인액티비티로 보내준 후 프래그먼트2로 보내줄 수 있도록
+                    // key값과 value를 같이 준다.
                 }
                 toast.show();
             }
@@ -124,8 +130,6 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("id", et_id.getText().toString());
                 params.put("pw", et_pw.getText().toString());
-                // params.put("json_data", 제이슨객체.toString());
-                // 제이슨으로 보내는 경우는.. 어레이 보낼 때,, VO (객체로 보낼때)
 
                 return params;
             }

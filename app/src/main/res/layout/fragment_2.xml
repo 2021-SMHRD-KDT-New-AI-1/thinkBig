@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/img_main_background"
+        android:id="@+id/img_grid_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -38,10 +38,10 @@
         android:layout_height="0dp"
         android:background="#52FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toEndOf="@+id/img_main_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_grid_background"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_main_background"
+        app:layout_constraintTop_toTopOf="@+id/img_grid_background"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -145,7 +145,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tv_grid_senseTemp"
         app:layout_constraintStart_toEndOf="@+id/tv_grid_senseTemp"
-        app:layout_constraintTop_toTopOf="@+id/img_main_background"
+        app:layout_constraintTop_toTopOf="@+id/img_grid_background"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -223,7 +223,7 @@
         app:layout_constraintBottom_toTopOf="@+id/postsRecyclerView"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/img_main_background"
+        app:layout_constraintTop_toTopOf="@+id/img_grid_background"
         app:layout_constraintVertical_bias="0.735" />
 
     <ImageView

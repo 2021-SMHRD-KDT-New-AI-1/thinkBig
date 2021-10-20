@@ -38,7 +38,7 @@ import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Edit_Profile extends AppCompatActivity {
+public class EditProfileActivity extends AppCompatActivity {
 
     int REQUEST_IMAGE_CODE = 1003;
     int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1004;
@@ -95,11 +95,11 @@ public class Edit_Profile extends AppCompatActivity {
                     editor_user_info = spf_user_info.edit();
                     editor_user_info.putString("nick", nick);
                     editor_user_info.putString("state_msg", state_msg);
-                    editor_user_info.putString("state_msg", state_msg);
                     editor_user_info.putString("pro_tag", pro_tag);
+                    editor_user_info.commit();
 
                     // 인텐트를 이용해서 메인 액티비티에 정보전달.
-                    Intent intent = new Intent(Edit_Profile.this, MainActivity.class);
+                    Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
                     intent.putExtra("from", "edt_profile");
                     intent.putExtra("nick", nick);
                     intent.putExtra("state_msg", state_msg);
@@ -187,20 +187,21 @@ public class Edit_Profile extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE_CODE){
+        if (requestCode == REQUEST_IMAGE_CODE) {
             Uri image = data.getData();
             try {
-                Bitmap bitmap  = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), image);
                 pro_img.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
-    }
+}

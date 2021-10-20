@@ -36,6 +36,8 @@ public class SignUpActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     Button btn_id_identify, btn_register;
     RequestQueue requestQueue;
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
 
     // 이너클래스에서 써야해서 전역으로 선언!
     String id = "";
@@ -70,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         String url = "http://172.30.1.29:3002/SignUp";
 
-        // 아이디 확인을 위한 값전달.
+        // 아이디 확인을 위한 연결.
         final StringRequest stringRequest_id_identify = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -110,6 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         };
 
+        // 회원가입을 위한 연결.
         final StringRequest stringRequest_join = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -122,16 +125,20 @@ public class SignUpActivity extends AppCompatActivity {
                 if (response.equals("join_success")) {
                     toast = Toast.makeText(getApplicationContext(), "회원가입 성공.", Toast.LENGTH_SHORT);
 
-                    SharedPreferences spf1 = getSharedPreferences("name", Context.MODE_PRIVATE);
-                    SharedPreferences spf2 = getSharedPreferences("birthdate", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = spf1.edit();
-                    SharedPreferences.Editor editor1 = spf2.edit();
-                    editor.putString("name", edit_name.getText().toString());
-                    editor.putString("birthdate", edit_birthdate.getText().toString());
-                    editor.commit();
+                    // 회원가입 성공했으니 SharedPreferences에 정보 입력
+                    spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+                    editor_user_info = spf_user_info.edit();
+                    editor_user_info.putString("id", id);
+                    editor_user_info.putString("pw", pw);
+                    editor_user_info.putString("birthdate", birthdate);
+                    editor_user_info.putString("name", name);
+                    editor_user_info.putString("gender", gender);
+                    editor_user_info.putString("phone", phone);
+                    editor_user_info.commit();
 
                     Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                     startActivity(intent);
+
                 } else if (response.equals("join_fail")) {
                     toast = Toast.makeText(getApplicationContext(), "정보를 다시 확인해주세요.", Toast.LENGTH_SHORT);
                 }
@@ -167,7 +174,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         stringRequest_id_identify.setTag(TAG);
         stringRequest_join.setTag(TAG);
-
 
         btn_id_identify.setOnClickListener(new View.OnClickListener() {
             @Override

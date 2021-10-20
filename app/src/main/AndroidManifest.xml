@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Weather"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".Member_information_change"
+            android:name=".UserInfoChangeActivity"
             android:exported="true" />
         <activity
             android:name=".SubmainActivity"
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Edit_Profile"
+            android:name=".EditProfileActivity"
             android:exported="true" >
         </activity>
         <activity

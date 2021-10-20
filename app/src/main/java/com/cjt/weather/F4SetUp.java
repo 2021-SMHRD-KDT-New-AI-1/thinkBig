@@ -51,9 +51,9 @@ public class F4SetUp extends Fragment {
         // 액티비티가 아니라서 Context가 없는 프래그먼트에는 사욯할 수 없다.
         spf = this.getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
         name = spf.getString("name", "default_name");
-        nick = spf.getString("nick", "default_nick");
-        state_msg = spf.getString("state_msg", "default_state_msg");
-        pro_tag = spf.getString("pro_tag", "default_pro_tag");
+        nick = spf.getString("nick", "");
+        state_msg = spf.getString("state_msg", "");
+        pro_tag = spf.getString("pro_tag", "");
         // spf.getString("id", 만약 사용할 데이터가 없을 때 디폴트 값 넣어주기);
 
         img_profile_pro_img_path.setImageResource(R.drawable.like_change);
@@ -85,7 +85,7 @@ public class F4SetUp extends Fragment {
         btn_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Edit_Profile.class);
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class F4SetUp extends Fragment {
         btn_edit_member_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Member_information_change.class);
+                Intent intent = new Intent(getActivity(), UserInfoChangeActivity.class);
                 startActivity(intent);
             }
         });

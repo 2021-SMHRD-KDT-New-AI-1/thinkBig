@@ -1,7 +1,5 @@
 package com.cjt.weather;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,11 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -29,7 +24,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,8 +33,10 @@ import java.util.Map;
 public class F2Grid extends Fragment {
 
     // 뷰 선언
-    ImageView img_grid_weatherIcon;
+    ImageView img_grid_background, img_grid_weatherIcon;
     TextView tv_grid_temp, tv_grid_weather, tv_grid_senseTemp, tv_grid_wind, tv_grid_humid;
+    RecyclerView postRecyclerView;
+    PostAdapter postAdapter;
 
     RequestQueue rq;
     private static final String TAG = "MAIN";
@@ -53,29 +49,34 @@ public class F2Grid extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        // 뷰 초기화
         View view = inflater.inflate(R.layout.fragment_2, container, false);
 
+        img_grid_background = view.findViewById(R.id.img_grid_background);
         img_grid_weatherIcon = view.findViewById(R.id.img_grid_weatherIcon);
-        // 날씨 뷰 초기화
+
         tv_grid_temp = view.findViewById(R.id.tv_grid_temp);
         tv_grid_weather = view.findViewById(R.id.tv_grid_weather);
         tv_grid_senseTemp = view.findViewById(R.id.tv_grid_senseTemp);
         tv_grid_wind = view.findViewById(R.id.tv_grid_wind);
         tv_grid_humid = view.findViewById(R.id.tv_grid_humid);
 
+        postRecyclerView = view.findViewById(R.id.postsRecyclerView);
+
+        // List<BoardVO> items 초기화
         items = new ArrayList<>();
+
         // 리싸이클러 뷰 시작
-        RecyclerView postRecyclerView = view.findViewById(R.id.postsRecyclerView);
         postRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
-        PostAdapter postAdapter = new PostAdapter(items);
+        postAdapter = new PostAdapter(items);
         postRecyclerView.setAdapter(postAdapter);
 
-        items.add(new BoardVO("이도현", "맑음!", R.drawable.amekaji1, "어머어머", "3", "청자켓", "치노팬츠", "구두", "크로스백"));
-        items.add(new BoardVO("이진화", "맑음!", R.drawable.amekaji2, "무야호~", "2", "조끼", "브라운팬츠", "닥터마틴", "오메가시계"));
-        items.add(new BoardVO("김지윤", "맑음!", R.drawable.amekaji3, "이렇게 하면", "7", "무신사스탠다드", "무신사스탠다드", "옥스포드", "18k 반지"));
-        items.add(new BoardVO("전진완", "맑음!", R.drawable.amekaji4, "애기야 가자", "12", "에잇세컨즈", "탑텐", "뉴발란스 327", "백팩"));
-        items.add(new BoardVO("최진태", "맑음!", R.drawable.amekaji5, "신에게는", "10", "아디다스", "보세 와이드 팬츠", "뉴발", "미착용"));
-        items.add(new BoardVO("배수지", "맑음!", R.drawable.amekaji6, "12척에 배가 ", "32", "커스텀멜로우", "체크바지", "닥스", "미착용"));
+        items.add(new BoardVO("이도현", "애기야 가자!", R.drawable.amekaji1, "#차도남", "3", "청자켓", "치노팬츠", "구두", "크로스백"));
+        items.add(new BoardVO("이진화", "고소할게요.", R.drawable.amekaji2, "#스트릿", "2", "조끼", "브라운팬츠", "닥터마틴", "오메가시계"));
+        items.add(new BoardVO("김지윤", "무야호~!!", R.drawable.amekaji3, "#행복행복", "7", "무신사스탠다드", "무신사스탠다드", "옥스포드", "18k 반지"));
+        items.add(new BoardVO("전진완", "그냥 되던데?", R.drawable.amekaji4, "#개발자룩", "12", "에잇세컨즈", "탑텐", "뉴발란스 327", "백팩"));
+        items.add(new BoardVO("최진태", "여름이었다.", R.drawable.amekaji5, "#캐주얼", "10", "아디다스", "보세 와이드 팬츠", "뉴발", "미착용"));
+        items.add(new BoardVO("배수지", "난 너무 예뻐요.", R.drawable.amekaji6, "#SoHot", "32", "커스텀멜로우", "체크바지", "닥스", "미착용"));
 
         if (rq == null) {
             rq = Volley.newRequestQueue(getActivity());
@@ -87,6 +88,7 @@ public class F2Grid extends Fragment {
         final StringRequest sr = new StringRequest(Request.Method.GET, url_weather, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("error", "onResponse: 날씨");
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
@@ -109,6 +111,23 @@ public class F2Grid extends Fragment {
                     tv_grid_humid.setText(humid);
                     tv_grid_wind.setText(wind);
 
+                    if (weather.equals("clear")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.clear);
+                        img_grid_background.setImageResource(R.drawable.clearbackground);
+                    } else if (weather.equals("clouds")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.clouds);
+                        img_grid_background.setImageResource(R.drawable.cloudsbackground);
+                    } else if (weather.equals("atmosphere")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.atmosphere);
+                    } else if (weather.equals("rain")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.rain);
+                        img_grid_background.setImageResource(R.drawable.rainbackground);
+                    } else if (weather.equals("thunderstorm")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.thunderstorm);
+                    } else if (weather.equals("drizzle")) {
+                        img_grid_weatherIcon.setImageResource(R.drawable.drizzle);
+                    }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -117,14 +136,17 @@ public class F2Grid extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("error", "onErrorResponse2: ");
+                        error.printStackTrace();
                     }
                 });
         sr.setTag(TAG);
+
+        // 날씨값 가져오는 연결 실행
         rq.add(sr);
 
         // 여기는 그리드에 뿌려줄 데이터 받아올 연결.
-        String url = "http://172.30.1.28:3002/resboard";
+        String url = "http://172.30.1.29:3002/resboard";
 
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -151,8 +173,8 @@ public class F2Grid extends Fragment {
                         String shoes = board.getString("shoes");
                         String acc = board.getString("acc");
 
-                        // 임시로 닉을 넣어주자
-                        BoardVO boardVO = new BoardVO("임시", state_msg, R.drawable.image1, content, like_cnt, top, bottom, shoes, acc);
+                        // 임시로 닉을 넣어주자.
+                        BoardVO boardVO = new BoardVO("임시", state_msg, R.drawable.image4, content, like_cnt, top, bottom, shoes, acc);
                         items.add(boardVO);
                     }
 
@@ -167,7 +189,7 @@ public class F2Grid extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("error", "onErrorResponse: ");
                     }
                 }
         ) {
