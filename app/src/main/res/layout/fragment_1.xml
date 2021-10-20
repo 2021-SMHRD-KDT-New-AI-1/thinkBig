@@ -128,7 +128,7 @@
         app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view11"
-        app:srcCompat="@drawable/clearbackground" />
+        app:srcCompat="@drawable/cloudsbackground" />
 
 
     <View
@@ -157,7 +157,7 @@
 
     <TextView
         android:id="@+id/tv_post_weather"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:gravity="center"
         android:text="Clear"
@@ -239,7 +239,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view11" />
+        app:layout_constraintTop_toBottomOf="@+id/view11"
+        app:srcCompat="@drawable/clouds"/>
 
     <ImageView
         android:id="@+id/img_select"
