@@ -85,7 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             tv_board_bottom.setText(items.getBottom());
             tv_board_acc.setText(items.getAcc());
 
-            tv_board_like_cnt.setOnClickListener(new View.OnClickListener() {
+            imgBtn_board_like.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     imgBtn_board_like.setImageResource(R.drawable.like_change);

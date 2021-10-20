@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".F4SetUp" >
+    tools:context=".F4SetUp">
 
     <Button
         android:id="@+id/btn_edit_profile"
@@ -96,35 +96,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="75dp"
         android:layout_marginEnd="119dp"
         android:text="닉네임"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_board_bottom"
         app:layout_constraintEnd_toStartOf="@+id/tv_board_shoes"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_profile_pro_img_path"
-        app:layout_constraintTop_toBottomOf="@+id/view17" />
+        app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="90dp"
         android:text="해시태그"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_profile_pro_tag"
+        app:layout_constraintBottom_toTopOf="@+id/view19"
         app:layout_constraintStart_toStartOf="@+id/tv_board_bottom"
         app:layout_constraintTop_toBottomOf="@+id/tv_board_bottom" />
 
     <TextView
         android:id="@+id/tv_board_bottom"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="64dp"
+        android:layout_height="wrap_content"
         android:text="상태메세지"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_board_acc"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 

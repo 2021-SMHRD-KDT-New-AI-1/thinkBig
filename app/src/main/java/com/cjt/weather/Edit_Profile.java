@@ -48,7 +48,8 @@ public class Edit_Profile extends AppCompatActivity {
     EditText ed_pro_nick, edt_pro_msg, edt_pro_hashtag;
     Button btn_pro_img;
     RequestQueue requestQueue;
-    SharedPreferences spf;
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
     ImageView pro_img;
 
     String id = "";
@@ -68,8 +69,8 @@ public class Edit_Profile extends AppCompatActivity {
         edt_pro_hashtag = findViewById(R.id.edt_pr_hashtag);
         btn_pro_img = findViewById(R.id.btn_pr_img);
 
-        spf = getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        id = spf.getString("id", "default_id");
+        spf_user_info = getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        id = spf_user_info.getString("id", "default_id");
         // spf.getString("id", 만약 사용할 데이터가 없을 때 디폴트 값 넣어주기);
 
         if (requestQueue == null) {
@@ -89,11 +90,21 @@ public class Edit_Profile extends AppCompatActivity {
                 Toast toast = null;
                 if (response.equals("edit_pro_success")) {
                     toast = Toast.makeText(getApplicationContext(), "프로필 설정 완료.", Toast.LENGTH_SHORT);
+
+                    // 쉐어드 프리퍼런스 이용해서 사용자 정보 저장.
+                    editor_user_info = spf_user_info.edit();
+                    editor_user_info.putString("nick", nick);
+                    editor_user_info.putString("state_msg", state_msg);
+                    editor_user_info.putString("state_msg", state_msg);
+                    editor_user_info.putString("pro_tag", pro_tag);
+
+                    // 인텐트를 이용해서 메인 액티비티에 정보전달.
                     Intent intent = new Intent(Edit_Profile.this, MainActivity.class);
                     intent.putExtra("from", "edt_profile");
                     intent.putExtra("nick", nick);
                     intent.putExtra("state_msg", state_msg);
                     intent.putExtra("pro_tag", pro_tag);
+
                     startActivity(intent);
 
                 } else if (response.equals("edit_pro_fail")) {

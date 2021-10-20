@@ -47,22 +47,6 @@ public class F4SetUp extends Fragment {
         tv_profile_state_msg = view.findViewById(R.id.tv_board_acc);
         tv_profile_pro_tag = view.findViewById(R.id.tv_profile_pro_tag);
 
-        /*
-        // Bundle : 메인 액티비티 -> F4로 값전달받기.
-        Bundle bundle = getArguments();
-
-        if (bundle != null) {
-            nick = bundle.getString("nick");
-            state_msg = bundle.getString("state_msg");
-            pro_tag = bundle.getString("pro_tag");
-
-            tv_nick.setText(nick);
-            tv_state_msg.setText(state_msg);
-            tv_pro_tag.setText(pro_tag);
-        }
-
-         */
-
         // getSharedPreferences는 Context 객체 메소드라서
         // 액티비티가 아니라서 Context가 없는 프래그먼트에는 사욯할 수 없다.
         spf = this.getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
@@ -79,11 +63,18 @@ public class F4SetUp extends Fragment {
         tv_profile_pro_tag.setText(pro_tag);
 
 
+        // Bundle : 메인 액티비티 -> F4로 값전달받기.
+        Bundle bundle = getArguments();
 
+        if (bundle != null) {
+            nick = bundle.getString("nick");
+            state_msg = bundle.getString("state_msg");
+            pro_tag = bundle.getString("pro_tag");
 
-
-
-
+            tv_profile_nick.setText(nick);
+            tv_profile_state_msg.setText(state_msg);
+            tv_profile_pro_tag.setText(pro_tag);
+        }
 
 
 
