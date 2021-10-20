@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/clearbackground" />
+        app:srcCompat="@drawable/cloudsbackground" />
 
     <TextView
         android:id="@+id/textView15"
@@ -64,7 +64,7 @@
         android:gravity="center"
         android:text="Gwangju"
         android:textColor="#4A4A4A"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/img_grid_weatherIcon"
         app:layout_constraintStart_toStartOf="@+id/img_grid_weatherIcon"
@@ -107,7 +107,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/clear" />
+        app:srcCompat="@drawable/clouds" />
 
     <TextView
         android:id="@+id/textView11"

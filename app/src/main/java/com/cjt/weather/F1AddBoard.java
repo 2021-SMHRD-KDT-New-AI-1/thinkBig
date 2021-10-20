@@ -47,7 +47,7 @@ public class F1AddBoard extends Fragment {
     int REQUEST_IMAGE_CODE = 1001;
     int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1002;
 
-    ImageView img_post, img_select;
+    ImageView img_post, img_select, img_grid_weathericon;
     EditText edt_post_content, edt_post_board_tag, edt_post_top, edt_post_bottom, edt_post_shoes, edt_post_acc;
     TextView tv_post_weather, tv_post_temper, tv_post_sense_temper, tv_post_wind, tv_post_humid;
 
@@ -122,7 +122,6 @@ public class F1AddBoard extends Fragment {
                     temper = main.getString("temp");
                     sense_temper = main.getString("feels_like");
                     humid = main.getString("humidity");
-
                     wind = windOb.getString("speed");
 
                     tv_post_weather.setText(weather);
