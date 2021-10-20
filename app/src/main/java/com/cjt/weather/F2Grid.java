@@ -70,7 +70,12 @@ public class F2Grid extends Fragment {
         PostAdapter postAdapter = new PostAdapter(items);
         postRecyclerView.setAdapter(postAdapter);
 
-        items.add(new BoardVO("최감자", "대~홍단 감자~!", R.drawable.image2, "내용이지!", "5", "나이키", "켈빈클라인", "뉴발", "티파니"));
+        items.add(new BoardVO("이도현", "맑음!", R.drawable.amekaji1, "어머어머", "3", "청자켓", "치노팬츠", "구두", "크로스백"));
+        items.add(new BoardVO("이진화", "맑음!", R.drawable.amekaji2, "무야호~", "2", "조끼", "브라운팬츠", "닥터마틴", "오메가시계"));
+        items.add(new BoardVO("김지윤", "맑음!", R.drawable.amekaji3, "이렇게 하면", "7", "무신사스탠다드", "무신사스탠다드", "옥스포드", "18k 반지"));
+        items.add(new BoardVO("전진완", "맑음!", R.drawable.amekaji4, "애기야 가자", "12", "에잇세컨즈", "탑텐", "뉴발란스 327", "백팩"));
+        items.add(new BoardVO("최진태", "맑음!", R.drawable.amekaji5, "신에게는", "10", "아디다스", "보세 와이드 팬츠", "뉴발", "미착용"));
+        items.add(new BoardVO("배수지", "맑음!", R.drawable.amekaji6, "12척에 배가 ", "32", "커스텀멜로우", "체크바지", "닥스", "미착용"));
 
         if (rq == null) {
             rq = Volley.newRequestQueue(getActivity());
