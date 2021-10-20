@@ -162,8 +162,7 @@ public class F2Grid extends Fragment {
                     for (int i = 0; i < boards.length(); i++) {
                         JSONObject board = (JSONObject) boards.get(i);
 
-                        //지금 닉네임을 못줘서 그래...
-                        //String nick = board.getString("nick");
+                        String nick = board.getString("nick");
                         String state_msg = board.getString("state_msg");
                         //String img = board.getString("img");
                         String content = board.getString("content");
@@ -173,8 +172,7 @@ public class F2Grid extends Fragment {
                         String shoes = board.getString("shoes");
                         String acc = board.getString("acc");
 
-                        // 임시로 닉을 넣어주자.
-                        BoardVO boardVO = new BoardVO("임시", state_msg, R.drawable.image4, content, like_cnt, top, bottom, shoes, acc);
+                        BoardVO boardVO = new BoardVO(nick, state_msg, R.drawable.image4, content, like_cnt, top, bottom, shoes, acc);
                         items.add(boardVO);
                     }
 

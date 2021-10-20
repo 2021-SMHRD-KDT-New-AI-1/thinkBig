@@ -13,11 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class F4SetUp extends Fragment {
 
     View view;
-    Button btn_edit_profile, btn_edit_member_info;
+    Button btn_edit_profile, btn_edit_member_info, btn_setup_logout;
 
     ImageView img_profile_pro_img_path;
 
@@ -26,7 +27,8 @@ public class F4SetUp extends Fragment {
     TextView tv_profile_state_msg;
     TextView tv_profile_pro_tag;
 
-    SharedPreferences spf;
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
 
     String name = "";
     String nick = "";
@@ -39,6 +41,7 @@ public class F4SetUp extends Fragment {
         view = inflater.inflate(R.layout.fragment_4, container, false);
         btn_edit_profile = view.findViewById(R.id.btn_edit_profile);
         btn_edit_member_info = view.findViewById(R.id.btn_edit_member_info);
+        btn_setup_logout = view.findViewById(R.id.btn_setup_logout);
 
         img_profile_pro_img_path = view.findViewById(R.id.img_profile_pro_img_path);
 
@@ -49,11 +52,11 @@ public class F4SetUp extends Fragment {
 
         // getSharedPreferences는 Context 객체 메소드라서
         // 액티비티가 아니라서 Context가 없는 프래그먼트에는 사욯할 수 없다.
-        spf = this.getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
-        name = spf.getString("name", "default_name");
-        nick = spf.getString("nick", "");
-        state_msg = spf.getString("state_msg", "");
-        pro_tag = spf.getString("pro_tag", "");
+        spf_user_info = this.getActivity().getSharedPreferences("user_info", Context.MODE_PRIVATE);
+        name = spf_user_info.getString("name", "default_name");
+        nick = spf_user_info.getString("nick", "");
+        state_msg = spf_user_info.getString("state_msg", "");
+        pro_tag = spf_user_info.getString("pro_tag", "");
         // spf.getString("id", 만약 사용할 데이터가 없을 때 디폴트 값 넣어주기);
 
         img_profile_pro_img_path.setImageResource(R.drawable.like_change);
@@ -76,12 +79,6 @@ public class F4SetUp extends Fragment {
             tv_profile_pro_tag.setText(pro_tag);
         }
 
-
-
-
-
-
-
         btn_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +91,31 @@ public class F4SetUp extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), UserInfoChangeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 로그아웃
+        btn_setup_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 사용자 정보 없애기(초기화)
+                editor_user_info = spf_user_info.edit();
+                editor_user_info.putString("id", "");
+                editor_user_info.putString("pw", "");
+                editor_user_info.putString("name", "");
+                editor_user_info.putString("phone", "");
+                editor_user_info.putString("gender", "");
+                editor_user_info.putString("birthdate", "");
+                editor_user_info.putString("nick", "");
+                editor_user_info.putString("state_msg", "");
+                editor_user_info.putString("pro_tag", "");
+                editor_user_info.commit();
+
+                Toast toast = null;
+                toast = Toast.makeText(getActivity(), "로그아웃 완료", Toast.LENGTH_SHORT);
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
         });

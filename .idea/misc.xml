@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SM210708/Desktop/thinkBig/app/src/main/res/drawable/my_color.xml" value="0.2598958333333333" />
+        <entry key="..\:/Users/SM210708/Desktop/thinkBig/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Users/SM210708/Desktop/thinkBig/app/src/main/res/layout/activity_submain.xml" value="0.33" />
+        <entry key="..\:/Users/SM210708/Desktop/thinkBig/app/src/main/res/layout/fragment_2.xml" value="0.17755825734549138" />
+        <entry key="..\:/Users/SM210708/Desktop/thinkBig/app/src/main/res/layout/fragment_4.xml" value="0.25" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/Weather/app/src/main/res/layout/activity_edit_profile.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/Weather/app/src/main/res/layout/activity_intro.xml" value="0.25" />
         <entry key="..\:/Users/smhrd/Desktop/AndroidStudy/Weather/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />

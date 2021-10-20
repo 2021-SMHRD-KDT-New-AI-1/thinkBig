@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                     String name = object.getString("name");
                     String phone = object.getString("phone");
                     String gender = object.getString("gender");
-                    String birthdate = object.getString("birthdate");
+                    String birthdate = object.getString("birth_date");
                     //String pro_img_path = object.getString("pro_img_path");
                     String nick = object.getString("nick");
                     String state_msg = object.getString("state_msg");
