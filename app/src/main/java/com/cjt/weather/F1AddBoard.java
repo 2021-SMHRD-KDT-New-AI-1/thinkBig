@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -51,13 +52,15 @@ public class F1AddBoard extends Fragment {
     int REQUEST_IMAGE_CODE = 1001;
     int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1002;
 
+    RequestQueue rq;
+    private static final String TAG = "MAIN";
+    String url_weather = "https://api.openweathermap.org/data/2.5/weather?q=gwangju&appid=3c8a165efd4b9e13dc4f58b4b1056c34&lang=kr&units=metric";
+    String url_post = "http://172.30.1.28:3002/board";
+
     ImageView img_post_background, img_post_weatherIcon, img_post, img_select;
     EditText edt_post_content, edt_post_board_tag, edt_post_top, edt_post_bottom, edt_post_shoes, edt_post_acc;
     TextView tv_post_weather, tv_post_temper, tv_post_sense_temper, tv_post_wind, tv_post_humid;
     Bitmap bmp_img;
-
-    RequestQueue rq;
-    private static final String TAG = "MAIN";
 
     SharedPreferences spf;
 
@@ -111,7 +114,6 @@ public class F1AddBoard extends Fragment {
         }
 
         // 날씨 가져오는 연결.
-        String url_weather = "https://api.openweathermap.org/data/2.5/weather?q=gwangju&appid=3c8a165efd4b9e13dc4f58b4b1056c34&lang=kr&units=metric";
 
         final StringRequest sr = new StringRequest(Request.Method.GET, url_weather, new Response.Listener<String>() {
             @Override
@@ -168,8 +170,6 @@ public class F1AddBoard extends Fragment {
                 });
         sr.setTag(TAG);
         rq.add(sr);
-
-        String url_post = "http://172.30.1.29:3002/board";
 
         final StringRequest stringRequest_posting = new StringRequest(Request.Method.POST, url_post, new Response.Listener<String>() {
             @Override
@@ -258,16 +258,25 @@ public class F1AddBoard extends Fragment {
             try {
                 // 앨범에서 가져온 사진으로 이미지뷰셋팅.(지윤이 코드)
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), image);
-                img_select.setImageBitmap(bitmap);
+                //img_select.setImageBitmap(bitmap);
 
                 // res/drawable 에 있는 이미지를 bitmap으로 가져오기
                 //bmp_img = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.image2);
 
                 // bmp_img 에 앨범에서 선택한 이미지 넣기.
-                BitmapDrawable drawable = (BitmapDrawable) img_select.getDrawable();
-                bmp_img = drawable.getBitmap();
+                //BitmapDrawable drawable = (BitmapDrawable) img_select.getDrawable();
+                //bmp_img = drawable.getBitmap();
+                //img_select.setImageBitmap(bitmap);
+
+                String imgpath = "C:/Users/smhrd/Desktop/AndroidStudy/thinkBig/amekaji1.png";
+                Bitmap bm = BitmapFactory.decodeFile(imgpath);
+                //img_select.setImageBitmap(decodeSampledBitmapFromResource(getResources(), bm, 100, 100));
+
+
+                Toast.makeText(getActivity(), "load ok", Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
+                Toast.makeText(getActivity(), "load error", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
         }
@@ -311,6 +320,34 @@ public class F1AddBoard extends Fragment {
         }
     }
 
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height > reqHeight || width > reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
 
 }
 

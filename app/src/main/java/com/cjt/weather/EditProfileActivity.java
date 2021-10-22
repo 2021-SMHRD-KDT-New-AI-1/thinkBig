@@ -43,14 +43,16 @@ public class EditProfileActivity extends AppCompatActivity {
     int REQUEST_IMAGE_CODE = 1003;
     int REQUEST_EXTERNAL_STORAGE_PERMISSION = 1004;
 
-    private static final String TAG = "MAIN";
-    ImageButton btn_pr_edit;
-    EditText ed_pro_nick, edt_pro_msg, edt_pro_hashtag;
-    Button btn_pro_img;
+    String url = "http://172.30.1.28:3002/Profile";
     RequestQueue requestQueue;
     SharedPreferences spf_user_info;
     SharedPreferences.Editor editor_user_info;
     ImageView pro_img;
+
+    private static final String TAG = "MAIN";
+    ImageButton btn_pr_edit;
+    EditText ed_pro_nick, edt_pro_msg, edt_pro_hashtag;
+    Button btn_pro_img;
 
     String id = "";
     String nick = "";
@@ -76,8 +78,6 @@ public class EditProfileActivity extends AppCompatActivity {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
-        String url = "http://172.30.1.29:3002/Profile";
 
         final StringRequest stringRequest_edit_profile = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

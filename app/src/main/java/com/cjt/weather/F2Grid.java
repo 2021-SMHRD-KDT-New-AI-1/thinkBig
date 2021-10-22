@@ -40,6 +40,8 @@ public class F2Grid extends Fragment {
 
     RequestQueue rq;
     private static final String TAG = "MAIN";
+    String url_weather = "https://api.openweathermap.org/data/2.5/weather?q=gwangju&appid=3c8a165efd4b9e13dc4f58b4b1056c34&lang=kr&units=metric";
+    String url = "http://172.30.1.28:3002/resboard";
 
     // 변수 선언
     String weather, temper = "", sense_temper, humid, wind;
@@ -83,8 +85,6 @@ public class F2Grid extends Fragment {
         }
 
         // 날씨값 받아오는 연결
-        String url_weather = "https://api.openweathermap.org/data/2.5/weather?q=gwangju&appid=3c8a165efd4b9e13dc4f58b4b1056c34&lang=kr&units=metric";
-
         final StringRequest sr = new StringRequest(Request.Method.GET, url_weather, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -146,8 +146,6 @@ public class F2Grid extends Fragment {
         rq.add(sr);
 
         // 여기는 그리드에 뿌려줄 데이터 받아올 연결.
-        String url = "http://172.30.1.29:3002/resboard";
-
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

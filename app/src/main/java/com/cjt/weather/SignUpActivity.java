@@ -30,14 +30,16 @@ import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    RequestQueue requestQueue;
     private static final String TAG = "MAIN";
+    String url = "http://172.30.1.29:3002/SignUp";
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
+
     EditText edit_id, edit_pw, edit_pw2, edit_birthdate, edit_name, edit_phone;
     RadioButton radio_male, radio_female;
     RadioGroup radioGroup;
     Button btn_id_identify, btn_register;
-    RequestQueue requestQueue;
-    SharedPreferences spf_user_info;
-    SharedPreferences.Editor editor_user_info;
 
     // 이너클래스에서 써야해서 전역으로 선언!
     String id = "";
@@ -69,8 +71,6 @@ public class SignUpActivity extends AppCompatActivity {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
-        String url = "http://172.30.1.29:3002/SignUp";
 
         // 아이디 확인을 위한 연결.
         final StringRequest stringRequest_id_identify = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

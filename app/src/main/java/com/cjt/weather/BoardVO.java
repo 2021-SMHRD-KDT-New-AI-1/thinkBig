@@ -1,7 +1,5 @@
 package com.cjt.weather;
 
-
-
 public class BoardVO {
 
     // 밑에 두개는 게시물의 아이디와 조인해서 같이 보내주세요.

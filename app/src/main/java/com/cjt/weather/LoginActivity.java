@@ -28,13 +28,15 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
+    RequestQueue requestQueue;
+    private static final String TAG = "MAIN";
+    String url = "http://172.30.1.28:3002/Login";
+    SharedPreferences spf_user_info;
+    SharedPreferences.Editor editor_user_info;
+
     // 뷰 선언
     EditText et_id, et_pw;
     Button btn_login, btn_join;
-    RequestQueue requestQueue;
-    private static final String TAG = "MAIN";
-    SharedPreferences spf_user_info;
-    SharedPreferences.Editor editor_user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
-        String url = "http://172.30.1.29:3002/Login";
 
         final StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
